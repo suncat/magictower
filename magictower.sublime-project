@@ -1,0 +1,22 @@
+{
+	"build_systems":
+	[
+		{
+			"cmd":
+			[
+				"python",
+				"-u",
+				"magictower.py"
+			],
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "run magictower"
+		}
+	],
+	"folders":
+	[
+		{
+			"path": "/Users/hxj/Documents/MyPrograms/magictower",
+			"file_exclude_patterns": ["*.pyc","*sublime-project","*sublime-workspace","*.mp3","*.ogg", "*.aif","*.m4a","*.png"]
+		}
+	]
+}
