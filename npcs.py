@@ -10,11 +10,15 @@ from choicebox import Choicebox
 
 
 class Snake(Npc):
-    images = ["snake.png"]
+    images = ["snake.png", "snake2.png"]
 
     def __init__(self, location):
         super(Snake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
+    def update(self):
+        super(Snake, self).update()
+        print self.image_no
+        
     def do_collide(self, player):
         if player.snakerocknum == 0:
             self.kill()

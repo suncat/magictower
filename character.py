@@ -13,6 +13,7 @@ class Character(pygame.sprite.Sprite):
         self.images = [pygame.transform.scale(pygame.image.load(imagefile), realsize) for imagefile in self.images]
         self.image_no = 0
         self.image = self.images[self.image_no]
+        self.update_counter = 10
         self.rect = self.image.get_rect()
         self.rect.left = location[0] - self.rect.width / 2
         self.rect.top = location[1] - self.rect.height / 2
@@ -27,10 +28,14 @@ class Character(pygame.sprite.Sprite):
         self.image = save
 
     def update(self):
-        self.image = self.next_image()
+        self.update_counter -= 1
+        if self.update_counter ==0:
+            self.image = self.next_image()
+            self.update_counter = 10
     
     def next_image(self):
-        if self.image_no + 1 <= len(self.images):
-            return self.images[self.image_no]
+        if self.image_no + 1 < len(self.images):
+            self.image_no += 1
         else:
             self.image_no = 0
+        return self.images[self.image_no]
