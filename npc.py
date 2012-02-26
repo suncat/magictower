@@ -8,8 +8,8 @@ from consts import *
 
 class Npc(character.Character):
 
-    def __init__(self, image_file, location, realsize):
-        super(Npc, self).__init__(image_file, location, realsize)
+    def __init__(self, location, realsize):
+        super(Npc, self).__init__(location, realsize)
 
     def do_collide(self, player):
         pass

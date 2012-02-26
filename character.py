@@ -6,12 +6,13 @@ from consts import *
 
 
 class Character(pygame.sprite.Sprite):
+    images = []
 
-    def __init__(self, image_file, location, realsize):
+    def __init__(self, location, realsize):
         super(Character, self).__init__()
+        self.images = [pygame.transform.scale(pygame.image.load(imagefile), realsize) for imagefile in self.images]
         self.image_no = 0
         self.image = self.images[self.image_no]
-    	self.image = pygame.transform.scale(pygame.image.load(self.image), realsize)
         self.rect = self.image.get_rect()
         self.rect.left = location[0] - self.rect.width / 2
         self.rect.top = location[1] - self.rect.height / 2

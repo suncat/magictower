@@ -13,7 +13,7 @@ class Snake(Npc):
     images = ["snake.png"]
 
     def __init__(self, location):
-        super(Snake, self).__init__("snake.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Snake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.snakerocknum == 0:
@@ -27,7 +27,7 @@ class MiddleSnake(Npc):
     images = ["middlesnake.png"]
 
     def __init__(self, location):
-        super(MiddleSnake, self).__init__("middlesnake.png", location, (CELL_SIZE, CELL_SIZE))
+        super(MiddleSnake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         self.kill()
@@ -46,7 +46,7 @@ class LargeSnake(Npc):
     images = ["largesnake.png"]
 
     def __init__(self, location):
-        super(LargeSnake, self).__init__("largesnake.png", location, (CELL_SIZE, CELL_SIZE))
+        super(LargeSnake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         self.kill()
@@ -65,7 +65,7 @@ class MagicSnake(Npc):
     images = ["magicsnake.png"]
 
     def __init__(self, location):
-        super(MagicSnake, self).__init__("magicsnake.png", location, (CELL_SIZE, CELL_SIZE))
+        super(MagicSnake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         self.kill()
@@ -82,7 +82,7 @@ class KingSnake(Npc):
     images = ["kingsnake.png"]
 
     def __init__(self, location):
-        super(KingSnake, self).__init__("kingsnake.png", location, (CELL_SIZE, CELL_SIZE))
+        super(KingSnake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         self.kill()
@@ -112,7 +112,7 @@ class Butterfly(Npc):
     images = ["butterfly.png"]
 
     def __init__(self, location):
-        super(Butterfly, self).__init__("butterfly.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Butterfly, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         self.kill()
@@ -126,7 +126,7 @@ class MidButterfly(Npc):
     images = ["midbutterfly.png"]
 
     def __init__(self, location):
-        super(MidButterfly, self).__init__("midbutterfly.png", location, (CELL_SIZE, CELL_SIZE))
+        super(MidButterfly, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         self.kill()
@@ -140,7 +140,7 @@ class Soldier(Npc):
     counter = 0
 
     def __init__(self, location):
-        super(Soldier, self).__init__("soldier.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Soldier, self).__init__(location, (CELL_SIZE, CELL_SIZE))
         Soldier.counter += 1
 
     def do_collide(self, player):
@@ -157,7 +157,7 @@ class MidSoldier(Npc):
     images = ["midsoldier.png"]
 
     def __init__(self, location):
-        super(MidSoldier, self).__init__("midsoldier.png", location, (CELL_SIZE, CELL_SIZE))
+        super(MidSoldier, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.hurt(420)
@@ -170,7 +170,7 @@ class LargeSoldier(Npc):
     images = ["largesoldier.png"]
 
     def __init__(self, location):
-        super(LargeSoldier, self).__init__("largesoldier.png", location, (CELL_SIZE, CELL_SIZE))
+        super(LargeSoldier, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.hurt(500)
@@ -183,7 +183,7 @@ class Leafy(Npc):
     images = ["leafy.png"]
 
     def __init__(self, location):
-        super(Leafy, self).__init__("leafy.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Leafy, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.hurt(500)
@@ -200,7 +200,7 @@ class Fleavey(Npc):
     images = ["fleavey.png"]
 
     def __init__(self, location):
-        super(Fleavey, self).__init__("fleavey.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Fleavey, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         skill = random.randint(1, 1)
@@ -233,7 +233,7 @@ class UpStair(Npc):
     images = ["upstair.png"]
 
     def __init__(self, location):
-        super(UpStair, self).__init__("upstair.png", location, (CELL_SIZE, CELL_SIZE))
+        super(UpStair, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.go_upstair()
@@ -243,7 +243,7 @@ class DownStair(Npc):
     images = ["downstair.png"]
 
     def __init__(self, location):
-        super(DownStair, self).__init__("downstair.png", location, (CELL_SIZE, CELL_SIZE))
+        super(DownStair, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.go_downstair()
@@ -253,7 +253,7 @@ class Wall(Npc):
     images = ["wall.png"]
 
     def __init__(self, location):
-        super(Wall, self).__init__("wall.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Wall, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -263,7 +263,7 @@ class Fakewall(Npc):
     images = ["wall.png"]
 
     def __init__(self, location):
-        super(Fakewall, self).__init__("wall.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Fakewall, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -274,7 +274,7 @@ class Defencerock(Npc):
     images = ["defencerock.png"]
 
     def __init__(self, location):
-        super(Defencerock, self).__init__("defencerock.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Defencerock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.defence += 8
@@ -285,7 +285,7 @@ class MiddleDProck(Npc):
     images = ["middledprock.png"]
 
     def __init__(self, location):
-        super(MiddleDProck, self).__init__("middledprock.png", location, (CELL_SIZE, CELL_SIZE))
+        super(MiddleDProck, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.defence += 30
@@ -300,7 +300,7 @@ class Largedprock(Npc):
     images = ["largedprock.png"]
 
     def __init__(self, location):
-        super(Largedprock, self).__init__("largedprock.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Largedprock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.defence += 60
@@ -311,7 +311,7 @@ class SnakeRock(Npc):
     images = ["snakerock.png"]
 
     def __init__(self, location):
-        super(SnakeRock, self).__init__("snakerock.png", location, (CELL_SIZE, CELL_SIZE))
+        super(SnakeRock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.snakerocknum += 1
@@ -322,7 +322,7 @@ class Smallmagic(Npc):
     images = ["smallmagic.png"]
 
     def __init__(self, location):
-        super(Smallmagic, self).__init__("smallmagic.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Smallmagic, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.magic += 90
@@ -333,7 +333,7 @@ class Smalldrug(Npc):
     images = ["smalldrug.png"]
 
     def __init__(self, location):
-        super(Smalldrug, self).__init__("smalldrug.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Smalldrug, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.health += 130
@@ -344,7 +344,7 @@ class Middledrug(Npc):
     images = ["middledrug.png"]
 
     def __init__(self, location):
-        super(Middledrug, self).__init__("middledrug.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Middledrug, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.health += 300
@@ -355,7 +355,7 @@ class Largedrug(Npc):
     images = ["largedrug.png"]
 
     def __init__(self, location):
-        super(Largedrug, self).__init__("largedrug.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Largedrug, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.health += 500
@@ -366,7 +366,7 @@ class Firerock(Npc):
     images = ["firerock.png"]
 
     def __init__(self, location):
-        super(Firerock, self).__init__("firerock.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Firerock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.feature = "FIRE"
@@ -377,7 +377,7 @@ class YellowKey(Npc):
     images = ["yellowkey.png"]
 
     def __init__(self, location):
-        super(YellowKey, self).__init__("yellowkey.png", location, (CELL_SIZE, CELL_SIZE))
+        super(YellowKey, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.ykeynum += 1
@@ -388,7 +388,7 @@ class BlueKey(Npc):
     images = ["bluekey.png"]
 
     def __init__(self, location):
-        super(BlueKey, self).__init__("bluekey.png", location, (CELL_SIZE, CELL_SIZE))
+        super(BlueKey, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.bkeynum += 1
@@ -399,7 +399,7 @@ class GreenKey(Npc):
     images = ["greenkey.png"]
 
     def __init__(self,location):
-        super(GreenKey, self).__init__("greenkey.png", location, (CELL_SIZE, CELL_SIZE))
+        super(GreenKey, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.gkeynum += 1
@@ -410,7 +410,7 @@ class NormalGkey(Npc):
     images = ["greenkey.png"]
 
     def __init__(self, location):
-        super(NormalGkey, self).__init__("greenkey.png", location, (CELL_SIZE, CELL_SIZE))
+        super(NormalGkey, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.gkeynum += 1
@@ -422,7 +422,7 @@ class YellowDoor(Npc):
     images = ["yellowdoor.png"]
 
     def __init__(self, location):
-        super(YellowDoor, self).__init__("yellowdoor.png", location, (CELL_SIZE, CELL_SIZE))
+        super(YellowDoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.ykeynum > 0:
@@ -436,7 +436,7 @@ class RedDoor(Npc):
     images = ["reddoor.png"]
 
     def __init__(self, location):
-        super(RedDoor, self).__init__("reddoor.png", location, (CELL_SIZE, CELL_SIZE))
+        super(RedDoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.rkeynum > 0:
@@ -450,7 +450,7 @@ class BlueDoor(Npc):
     images = ["bluedoor.png"]
 
     def __init__(self, location):
-        super(BlueDoor, self).__init__("bluedoor.png", location, (CELL_SIZE, CELL_SIZE))
+        super(BlueDoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.bkeynum > 0:
@@ -464,7 +464,7 @@ class GreenDoor(Npc):
     images = ["greendoor.png"]
 
     def __init__(self, location):
-        super(GreenDoor, self).__init__("greendoor.png", location, (CELL_SIZE, CELL_SIZE))
+        super(GreenDoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.gkeynum > 0:
@@ -478,7 +478,7 @@ class Specialdoor(Npc):
     images =["specialdoor.png"]
 
     def __init__(self, location):
-        super(Specialdoor, self).__init__("specialdoor.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Specialdoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -490,7 +490,7 @@ class Ftendoor(Npc):
     images = ["specialdoor.png"]
 
     def __init__(self, location):
-        super(Ftendoor, self).__init__("specialdoor.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Ftendoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -503,7 +503,7 @@ class Switchdoor(Npc):
     images = ["specialdoor.png"]
 
     def __init__(self, location):
-        super(Switchdoor, self).__init__("specialdoor.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Switchdoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -513,7 +513,7 @@ class TopFloorGate(Npc):
     images = ["topfloorgate.png"]
 
     def __init__(self, location):
-        super(TopFloorGate, self).__init__("topfloorgate.png", location, (CELL_SIZE, CELL_SIZE))
+        super(TopFloorGate, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.get_top == True:
@@ -528,7 +528,7 @@ class Oldman(Npc):
     images = ["oldman.png"]
 
     def __init__(self, location):
-        super(Oldman, self).__init__("oldman.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Oldman, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         Msgbox("Do not think about everything is so easy. Mind traps.").show()
@@ -539,7 +539,7 @@ class Franklin(Npc):
     images = ["franklin.png"]
 
     def __init__(self, location):
-        super(Franklin, self).__init__("franklin.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Franklin, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         Msgbox("My name is Franklin.").show()
@@ -556,7 +556,7 @@ class Trap(Npc):
     images = ["trap.png"]
 
     def __init__(self, location):
-        super(Trap, self).__init__("trap.png", location, (CELL_SIZE, CELL_SIZE))
+        super(Trap, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         self.kill()
@@ -568,7 +568,7 @@ class MoneyShop(Npc):
     images = ["moneyshop.png"]
 
     def __init__(self, location):
-        super(MoneyShop, self).__init__("moneyshop.png", location, (CELL_SIZE, CELL_SIZE))
+        super(MoneyShop, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -584,7 +584,7 @@ class SecondMoney(Npc):
     images = ["secondmoney.png"]
 
     def __init__(self, location):
-        super(SecondMoney, self).__init__("secondmoney.png", location, (CELL_SIZE, CELL_SIZE))
+        super(SecondMoney, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -600,7 +600,7 @@ class ExpShop(Npc):
     images = ["expshop.png"]
 
     def __init__(self, location):
-        super(ExpShop, self).__init__("expshop.png", location, (CELL_SIZE, CELL_SIZE))
+        super(ExpShop, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()
@@ -616,7 +616,7 @@ class SecondExp(Npc):
     images = ["secondexp.png"]
 
     def __init__(self, location):
-        super(SecondExp, self).__init__("secondexp.png", location, (CELL_SIZE, CELL_SIZE))
+        super(SecondExp, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()

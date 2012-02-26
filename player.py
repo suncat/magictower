@@ -12,17 +12,17 @@ from npcs import UpStair, DownStair
 class Player(character.Character):
     images = ["worior.png", "worior2.png"]
 
-    def __init__(self, image_file, speed, location, gameboard):
-        super(Player, self).__init__(image_file, location, (CELL_SIZE,CELL_SIZE))
+    def __init__(self, speed, location, gameboard):
+        super(Player, self).__init__(location, (CELL_SIZE,CELL_SIZE))
         self.gameboard = gameboard
         self.speed = speed
         self.on_power = False
         self.get_top = False
-        self.health = 10000
+        self.health = 500
         self.magic = 200
         self.feature = "NONE"
         self.defence = 0
-        self.ykeynum = 1
+        self.ykeynum = 0
         self.bkeynum = 0
         self.rkeynum = 0
         self.gkeynum = 0
@@ -31,7 +31,7 @@ class Player(character.Character):
         self.money = 0
         self.exp = 0
         self.level = 1
-        STARTFLOOR = 12
+        STARTFLOOR = 1
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
@@ -49,8 +49,15 @@ class Player(character.Character):
     def update(self):
         super(Player, self).update()
         self.oldpos = self.rect.copy()
-        for i in range(1, 31):
-            self.rect.move_ip(self.speed)
+        """if self.speed != [0, 0]:
+            for i in range(CELL_SIZE/STEP):
+                self.rect.move_ip(self.speed)
+                self.image = self.next_image()
+                self.gameboard.blit(self.image, self.rect)
+                pygame.display.update()
+                pygame.time.delay(500)
+        """
+        self.rect.move_ip(self.speed)
         self.speed = [0, 0]
         if self.is_out():
             self.rect = self.oldpos

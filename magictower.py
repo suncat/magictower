@@ -48,7 +48,7 @@ gameboard = screen.subsurface(TEXTBOARD_WIDTH, 0, GAMEBOARD_WIDTH, GAMEBOARD_HEI
 #pygame.time.delay(1000)
 
 initspeed = [0, 0]
-player = Player("worior.png", initspeed, (CELL_SIZE/2, MAP_ROWS*CELL_SIZE-CELL_SIZE/2),gameboard)
+player = Player(initspeed, (CELL_SIZE/2, MAP_ROWS*CELL_SIZE-CELL_SIZE/2),gameboard)
 group_player = pygame.sprite.Group()
 group_player.add(player)
 
