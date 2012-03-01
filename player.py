@@ -74,8 +74,8 @@ class Player(character.Character):
     def weaken(self, damage):
         self.magic -= damage
         if self.magic < 0:
+            self.hurt(damage - self.magic * 3)
             self.magic = 0
-            self.hurt(damage * 2)
 
     def undo(self):
         self.rect = self.oldpos
@@ -212,3 +212,15 @@ class Player(character.Character):
             self.level += 3
             self.health += 900
             self.defence += 90
+    
+    def pick_key(self, key):
+        attr = key + 'keynum'
+        setattr(self, attr, getattr(self, attr) + 1)
+    
+    def use_key(self, key):
+        attr = key + 'keynum'
+        keynum = getattr(self, attr)
+        if keynum > 0:
+            setattr(self, attr, keynum - 1)
+            return True
+        return False
