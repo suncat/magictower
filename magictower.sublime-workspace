@@ -3,6 +3,26 @@
 	{
 		"selected_items":
 		[
+			[
+				"f",
+				"from"
+			],
+			[
+				"M",
+				"MiddleDProck"
+			],
+			[
+				"__",
+				"__init__"
+			],
+			[
+				"a",
+				"AbstractDoor"
+			],
+			[
+				"get",
+				"getattr"
+			]
 		]
 	},
 	"buffers":
@@ -11,7 +31,7 @@
 			"file": "magictower.py",
 			"settings":
 			{
-				"buffer_size": 4339,
+				"buffer_size": 4325,
 				"line_ending": "Unix"
 			}
 		},
@@ -19,7 +39,7 @@
 			"file": "character.py",
 			"settings":
 			{
-				"buffer_size": 1116,
+				"buffer_size": 1323,
 				"line_ending": "Unix"
 			}
 		},
@@ -27,7 +47,7 @@
 			"file": "player.py",
 			"settings":
 			{
-				"buffer_size": 5941,
+				"buffer_size": 6548,
 				"line_ending": "Unix"
 			}
 		},
@@ -35,7 +55,7 @@
 			"file": "npc.py",
 			"settings":
 			{
-				"buffer_size": 295,
+				"buffer_size": 271,
 				"line_ending": "Unix"
 			}
 		},
@@ -43,15 +63,31 @@
 			"file": "npcs.py",
 			"settings":
 			{
-				"buffer_size": 18426,
+				"buffer_size": 3614,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "consts.py",
+			"file": "shops.py",
 			"settings":
 			{
-				"buffer_size": 1234,
+				"buffer_size": 2079,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "talkable.py",
+			"settings":
+			{
+				"buffer_size": 919,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "keys.py",
+			"settings":
+			{
+				"buffer_size": 606,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,7 +95,7 @@
 			"file": "floor.py",
 			"settings":
 			{
-				"buffer_size": 1003,
+				"buffer_size": 1043,
 				"line_ending": "Unix"
 			}
 		},
@@ -67,7 +103,7 @@
 			"file": "choicebox.py",
 			"settings":
 			{
-				"buffer_size": 802,
+				"buffer_size": 819,
 				"line_ending": "Unix"
 			}
 		},
@@ -76,6 +112,65 @@
 			"settings":
 			{
 				"buffer_size": 1008,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "doors.py",
+			"settings":
+			{
+				"buffer_size": 1364,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "walls.py",
+			"settings":
+			{
+				"buffer_size": 413,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "soldiers.py",
+			"settings":
+			{
+				"buffer_size": 947,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "diff --git a/butterflies.py b/butterflies.py\nindex 51dfef8..25e458a 100644\n--- a/butterflies.py\n+++ b/butterflies.py\n@@ -7,7 +7,7 @@ from npc import Npc\n \n \n class Butterfly(Npc):\n-    images = [\"butterfly.png\"]\n+    images = [\"butterfly.png\", \"butterfly2.png\"]\n     hp = 80\n     money = 2\n     exp = 2\n@@ -24,7 +24,7 @@ class Butterfly(Npc):\n \n \n class MidButterfly(Butterfly):\n-    images = [\"midbutterfly.png\"]\n+    images = [\"midbutterfly.png\", \"midbutterfly2.png\"]\n     hp = 150\n     money = 4\n     exp = 4\ndiff --git a/player.py b/player.py\nindex ee341a4..a0d8be9 100755\n--- a/player.py\n+++ b/player.py\n@@ -18,20 +18,20 @@ class Player(character.Character):\n         self.speed = speed\n         self.on_power = False\n         self.get_top = False\n-        self.health = 500\n+        self.health = 1000\n         self.magic = 200\n         self.feature = \"NONE\"\n-        self.defence = 0\n-        self.ykeynum = 0\n-        self.bkeynum = 0\n-        self.rkeynum = 0\n-        self.gkeynum = 0\n+        self.defence = 300\n+        self.ykeynum = 1\n+        self.bkeynum = 1\n+        self.rkeynum = 1\n+        self.gkeynum = 1\n         self.snakedp = 0\n         self.snakerocknum = 0\n         self.money = 0\n         self.exp = 0\n         self.level = 1\n-        STARTFLOOR = 1\n+        STARTFLOOR = 11\n         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])\n         self.visited_floors = {STARTFLOOR: self.currentfloor}\n \ndiff --git a/snakes.py b/snakes.py\nindex a4f4407..519403c 100644\n--- a/snakes.py\n+++ b/snakes.py\n@@ -4,6 +4,11 @@ import pygame\n \n from consts import CELL_SIZE\n from npc import Npc\n+from doors import Switchdoor\n+from dprocks import Largedprock\n+from drugs import Middledrug\n+from keys import BlueKey\n+from msgbox import Msgbox\n \n \n class Snake(Npc):\n@@ -38,14 +43,14 @@ class LargeSnake(Snake):\n \n \n class MagicSnake(Snake):\n-    images = [\"magicsnake.png\"]\n+    images = [\"magicsnake.png\", \"magicsnake2.png\"]\n     hp = 300\n     bonus_money = 9\n     bonus_exp = 8\n \n \n class KingSnake(Snake):\n-    images = [\"kingsnake.png\"]\n+    images = [\"kingsnake.png\", \"kingsnake2.png\"]\n     hp = 350\n     bonus_money = 10\n     bonus_exp = 10\n",
+			"settings":
+			{
+				"buffer_size": 2168,
+				"line_ending": "Unix",
+				"name": "soldiers.py.diff",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "dprocks.py",
+			"settings":
+			{
+				"buffer_size": 819,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "snakes.py",
+			"settings":
+			{
+				"buffer_size": 1961,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "butterflies.py",
+			"settings":
+			{
+				"buffer_size": 627,
 				"line_ending": "Unix"
 			}
 		}
@@ -104,6 +199,18 @@
 	},
 	"file_history":
 	[
+		"/Users/hxj/Documents/MyPrograms/magictower/doors.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/snakes.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/butterflies.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/soldiers.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/stairs.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/walls.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/dprocks.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/drugs.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/magics.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/features.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/consts.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/basesnake.py",
 		"/Library/Python/2.7/site-packages/pygame/sprite.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/setup.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/magictower.sublime-project",
@@ -153,7 +260,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 14,
 			"sheets":
 			[
 				{
@@ -161,15 +268,15 @@
 					"file": "magictower.py",
 					"settings":
 					{
-						"buffer_size": 4339,
+						"buffer_size": 4325,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2266,
-								2266
+								584,
+								584
 							]
 						],
 						"settings":
@@ -182,7 +289,7 @@
 							"wrap_width": 0
 						},
 						"translation.x": 0.0,
-						"translation.y": 377.0,
+						"translation.y": 276.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -192,15 +299,15 @@
 					"file": "character.py",
 					"settings":
 					{
-						"buffer_size": 1116,
+						"buffer_size": 1323,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1006,
-								1006
+								216,
+								216
 							]
 						],
 						"settings":
@@ -210,7 +317,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 29.0,
+						"translation.y": 164.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -220,15 +327,15 @@
 					"file": "player.py",
 					"settings":
 					{
-						"buffer_size": 5941,
+						"buffer_size": 6548,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1563,
-								1563
+								854,
+								854
 							]
 						],
 						"settings":
@@ -242,7 +349,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 515.0,
+						"translation.y": 101.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -252,15 +359,15 @@
 					"file": "npc.py",
 					"settings":
 					{
-						"buffer_size": 295,
+						"buffer_size": 271,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								181,
-								181
+								0,
+								0
 							]
 						],
 						"settings":
@@ -278,43 +385,44 @@
 					"file": "npcs.py",
 					"settings":
 					{
-						"buffer_size": 18426,
+						"buffer_size": 3614,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6665,
-								6665
+								482,
+								482
 							]
 						],
 						"settings":
 						{
+							"spell_check": false,
 							"syntax": "Packages/Python/Python.tmLanguage",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 12171.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "consts.py",
+					"file": "shops.py",
 					"settings":
 					{
-						"buffer_size": 1234,
+						"buffer_size": 2079,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1227,
-								1227
+								134,
+								134
 							]
 						],
 						"settings":
@@ -331,18 +439,74 @@
 				},
 				{
 					"buffer": 6,
-					"file": "floor.py",
+					"file": "talkable.py",
 					"settings":
 					{
-						"buffer_size": 1003,
+						"buffer_size": 919,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								938,
-								938
+								128,
+								128
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 81.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "keys.py",
+					"settings":
+					{
+						"buffer_size": 606,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								181,
+								181
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "floor.py",
+					"settings":
+					{
+						"buffer_size": 1043,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								889,
+								889
 							]
 						],
 						"settings":
@@ -356,25 +520,25 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 81.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 9,
 					"file": "choicebox.py",
 					"settings":
 					{
-						"buffer_size": 802,
+						"buffer_size": 819,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								797,
+								797
 							]
 						],
 						"settings":
@@ -389,7 +553,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 10,
 					"file": "msgbox.py",
 					"settings":
 					{
@@ -402,6 +566,199 @@
 							[
 								302,
 								302
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "doors.py",
+					"settings":
+					{
+						"buffer_size": 1364,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1096,
+								1096
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 851.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "walls.py",
+					"settings":
+					{
+						"buffer_size": 413,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								394,
+								394
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "soldiers.py",
+					"settings":
+					{
+						"buffer_size": 947,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								657,
+								657
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 257.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"settings":
+					{
+						"buffer_size": 2168,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Diff/Diff.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 1225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "dprocks.py",
+					"settings":
+					{
+						"buffer_size": 819,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								128,
+								128
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "snakes.py",
+					"settings":
+					{
+						"buffer_size": 1961,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								257,
+								257
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "butterflies.py",
+					"settings":
+					{
+						"buffer_size": 627,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								581,
+								581
 							]
 						],
 						"settings":
@@ -450,6 +807,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 191.0
+	},
 	"replace":
 	{
 		"height": 0.0

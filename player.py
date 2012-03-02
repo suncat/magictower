@@ -18,20 +18,20 @@ class Player(character.Character):
         self.speed = speed
         self.on_power = False
         self.get_top = False
-        self.health = 500
+        self.health = 1000
         self.magic = 200
         self.feature = "NONE"
-        self.defence = 0
-        self.ykeynum = 0
-        self.bkeynum = 0
-        self.rkeynum = 0
-        self.gkeynum = 0
+        self.defence = 300
+        self.ykeynum = 1
+        self.bkeynum = 1
+        self.rkeynum = 1
+        self.gkeynum = 1
         self.snakedp = 0
         self.snakerocknum = 0
         self.money = 0
         self.exp = 0
         self.level = 1
-        STARTFLOOR = 1
+        STARTFLOOR = 11
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 

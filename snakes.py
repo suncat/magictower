@@ -4,6 +4,11 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from doors import Switchdoor
+from dprocks import Largedprock
+from drugs import Middledrug
+from keys import BlueKey
+from msgbox import Msgbox
 
 
 class Snake(Npc):
@@ -38,14 +43,14 @@ class LargeSnake(Snake):
 
 
 class MagicSnake(Snake):
-    images = ["magicsnake.png"]
+    images = ["magicsnake.png", "magicsnake2.png"]
     hp = 300
     bonus_money = 9
     bonus_exp = 8
 
 
 class KingSnake(Snake):
-    images = ["kingsnake.png"]
+    images = ["kingsnake.png", "kingsnake2.png"]
     hp = 350
     bonus_money = 10
     bonus_exp = 10

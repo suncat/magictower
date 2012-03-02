@@ -7,7 +7,7 @@ from npc import Npc
 
 
 class Butterfly(Npc):
-    images = ["butterfly.png"]
+    images = ["butterfly.png", "butterfly2.png"]
     hp = 80
     money = 2
     exp = 2
@@ -24,7 +24,7 @@ class Butterfly(Npc):
 
 
 class MidButterfly(Butterfly):
-    images = ["midbutterfly.png"]
+    images = ["midbutterfly.png", "midbutterfly2.png"]
     hp = 150
     money = 4
     exp = 4
