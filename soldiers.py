@@ -7,7 +7,7 @@ from npc import Npc
 
 
 class MidSoldier(Npc):
-    images = ["midsoldier.png"]
+    images = ["midsoldier.png", "midsoldier2.png"]
     hp = 420
     money = 10
     exp = 10
@@ -23,7 +23,7 @@ class MidSoldier(Npc):
 
 
 class Soldier(MidSoldier):
-    images = ["soldier.png"]
+    images = ["soldier.png", "soldier2.png"]
     counter = 0
     hp = 320
     money = 9
@@ -37,7 +37,7 @@ class Soldier(MidSoldier):
 
 
 class LargeSoldier(MidSoldier):
-    images = ["largesoldier.png"]
+    images = ["largesoldier.png", "largesoldier2.png"]
     hp = 500
     money = 12
     exp = 12
