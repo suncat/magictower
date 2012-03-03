@@ -28,7 +28,6 @@ class Floor:
                     if npc_class == GreenKey:
                         self.group_gk.add(npc_class(loc))
                     else:
-                        print npc_class
                         self.group.add(npc_class(loc))
     
     def show_greenkeys(self):

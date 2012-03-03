@@ -24,7 +24,7 @@ from walls import *
 
 
 class Leafy(Npc):
-    images = ["leafy.png"]
+    images = ["leafy.png", "leafy2.png"]
 
     def __init__(self, location):
         super(Leafy, self).__init__(location, (CELL_SIZE, CELL_SIZE))

@@ -54,6 +54,7 @@ class KingSnake(Snake):
     hp = 350
     bonus_money = 10
     bonus_exp = 10
+    first_ften = True
 
     def do_collide(self, player):
         super(KingSnake, self).do_collide(player)

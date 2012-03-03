@@ -16,7 +16,7 @@ $ 杀死蛇王后，弹出对话框，switchdoors消失。
 实现Player的移动动画效果。
 不要直接指定角色的实际位置坐标，而是告诉程序在第几行第几列，由程序自己计算坐标值。
 目前文件太多太乱，不易管理，应该将所有图片文件放到image目录下，所有声音文件放到sound目录下。
-npcs.py中的类太多，不易管理，应重新设计类之间的继承关系，将不同类型的NPC抽象出几个基类，如Enemy, Stair, Door, Key, Shop, Drug等，在此基础上分别派生出所有的子类，可以有多层继承关系，将子类的共同代码放入基类中，同时将npcs.py按此原则分割为多个模块。
+$ npcs.py中的类太多，不易管理，应重新设计类之间的继承关系，将不同类型的NPC抽象出几个基类，如Enemy, Stair, Door, Key, Shop, Drug等，在此基础上分别派生出所有的子类，可以有多层继承关系，将子类的共同代码放入基类中，同时将npcs.py按此原则分割为多个模块。
 player死后，显示2个按钮，允许玩家选择重新开始或退出游戏。
 减血时显示血量信息，最好能有动画效果。
 钥匙直接画出来。
@@ -32,7 +32,8 @@ import sys
 
 from consts import *
 from player import Player
-from npcs import Snake
+from npcs import *
+from keys import *
 
 
 pygame.init()
@@ -77,50 +78,58 @@ while True:
 
     # 填充背景
     gameboard.fill([255, 255, 255])
-    textboard.fill([255, 255, 0])
+    textboard.fill([120, 120, 120])
     # 画人
     group_player.draw(gameboard)
     # 画当前楼层地图
     player.currentfloor.group.draw(gameboard)
-    # 显示分数
+    # 显示体力
     font = pygame.font.Font(None, 30)
-    health_text = font.render("health: " + str(player.health), 1, (0, 0, 255))
+    health_text = font.render("health: " + str(player.health), 1, (255, 0, 255))
     textpos = [10, 10]
     textboard.blit(health_text, textpos)
     # 显示防御
-    defence_text = font.render("defence: " + str(player.defence), 1, (0, 255, 0))
+    defence_text = font.render("defence: " + str(player.defence), 1, (150, 0, 255))
     textpos2 = [10, 40]
     textboard.blit(defence_text, textpos2)
     # 显示楼层
-    floor_text = font.render("floor: " + str(player.currentfloor.floornum), 1, (255, 0, 0))
+    floor_text = font.render("floor: " + str(player.currentfloor.floornum), 1, (150, 255, 0))
     textpos3 = [10, 70]
     textboard.blit(floor_text, textpos3)
     # 显示黄钥匙
-    key_text = font.render("yellowkey: " + str(player.ykeynum), 1, (255, 150, 0))
-    textpos4 = [10, 100]
+    ykey = YellowKey([10, 130], (25, 25))
+    textboard.blit(ykey.image, [10, 130])
+    key_text = font.render(str(player.ykeynum), 1, (255, 255, 0))
+    textpos4 = [40, 130]
     textboard.blit(key_text, textpos4)
     #显示蓝钥匙
-    key_text2 = font.render("bluekey: " + str(player.bkeynum), 1, (255, 0, 255))
-    textpos7 = [10, 160]
+    bkey = BlueKey([10, 160], (25, 25))
+    textboard.blit(bkey.image, [10, 160])
+    key_text2 = font.render(str(player.bkeynum), 1, (0, 0, 255))
+    textpos7 = [40, 160]
     textboard.blit(key_text2, textpos7)
     #显示红钥匙
-    key_text3 = font.render("redkey: " + str(player.rkeynum), 1, (150, 255, 0))
-    textpos8 = [10, 190]
+    rkey = RedKey([10, 190], (25, 25))
+    textboard.blit(rkey.image, [10, 190])
+    key_text3 = font.render(str(player.rkeynum), 1, (255, 0, 0))
+    textpos8 = [40, 190]
     textboard.blit(key_text3, textpos8)
     #显示绿钥匙
-    key_text4 = font.render("greenkey: " + str(player.gkeynum), 1, (150, 0, 255))
-    textpos9 = [10, 220]
+    gkey = GreenKey([10, 220], (25, 25))
+    textboard.blit(gkey.image, [10, 220])
+    key_text4 = font.render(str(player.gkeynum), 1, (0, 255, 0))
+    textpos9 = [40, 220]
     textboard.blit(key_text4, textpos9)
     # 显示蛇怪防御石
     snakerock_text = font.render("snakerock: " + str(player.snakerocknum), 1, (0, 255, 255))
-    textpos5 = [10, 130]
+    textpos5 = [10, 100]
     textboard.blit(snakerock_text, textpos5)
     # 显示金币
     money_text = font.render("money: " + str(player.money), 1, (0, 150, 0))
     moneypos = [10, 250]
     textboard.blit(money_text, moneypos)
     # 显示经验
-    exp_text = font.render("exp: " + str(player.exp), 1, (0, 0, 150))
+    exp_text = font.render("exp: " + str(player.exp), 1, (0, 0, 100))
     expos = [10, 280]
     textboard.blit(exp_text, expos)
     # 显示等级
@@ -132,5 +141,10 @@ while True:
         mg_text = font.render("magic: " + str(player.magic), 1, (150, 0, 200))
         mgpos = [10, 340]
         textboard.blit(mg_text, mgpos)
+    # 显示属性
+    if player.currentfloor.floornum >= 11:
+        ft_text = font.render("feature: " + str(player.feature), 1, (150, 200, 0))
+        ftpos = [10, 370]
+        textboard.blit(ft_text, ftpos)
     # 刷新屏幕
     pygame.display.flip()

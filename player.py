@@ -2,11 +2,13 @@
 #coding=utf-8
 import character
 import pygame
+import sys
 
 from consts import *
 from msgbox import Msgbox
 from floor import Floor
 from npcs import UpStair, DownStair
+from snakes import KingSnake
 
 
 class Player(character.Character):
@@ -18,20 +20,20 @@ class Player(character.Character):
         self.speed = speed
         self.on_power = False
         self.get_top = False
-        self.health = 1000
+        self.health = 500
         self.magic = 200
         self.feature = "NONE"
-        self.defence = 300
-        self.ykeynum = 1
-        self.bkeynum = 1
-        self.rkeynum = 1
-        self.gkeynum = 1
+        self.defence = 0
+        self.ykeynum = 0
+        self.bkeynum = 0
+        self.rkeynum = 0
+        self.gkeynum = 0
         self.snakedp = 0
         self.snakerocknum = 0
         self.money = 0
         self.exp = 0
         self.level = 1
-        STARTFLOOR = 11
+        STARTFLOOR = 1
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
@@ -92,6 +94,7 @@ class Player(character.Character):
         msgbox = Msgbox("Game over!!! Press RETURN to continue...", (100,100))
         msgbox.show()
         self.kill()
+        sys.exit()
 
     def goto_floor(self, floornum):
         """ 跳转至指定楼层。
@@ -110,7 +113,9 @@ class Player(character.Character):
                 self.rect.left = npc.rect.left + CELL_SIZE
                 self.rect.top = npc.rect.top
                 if self.currentfloor.floornum == 10:
-                    Msgbox("You get here, now. But you can't continue.").show()
+                    if KingSnake.first_ften == True:
+                        Msgbox("You get here, now. But you can't continue.").show()
+                        KingSnake.first_ften = False
 
     def go_downstair(self):
         self.goto_floor(self.currentfloor.floornum-1)
