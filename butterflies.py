@@ -4,9 +4,10 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from enemy import Enemy
 
 
-class Butterfly(Npc):
+class Butterfly(Enemy):
     images = ["butterfly.png", "butterfly2.png"]
     hp = 80
     money = 2

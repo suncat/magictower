@@ -9,9 +9,10 @@ from dprocks import Largedprock
 from drugs import Middledrug
 from keys import BlueKey
 from msgbox import Msgbox
+from enemy import Enemy
 
 
-class Snake(Npc):
+class Snake(Enemy):
     images = ["snake.png", "snake2.png"]
     hp = 10
     bonus_money = 1

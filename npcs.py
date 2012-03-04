@@ -21,9 +21,10 @@ from shops import *
 from stairs import *
 from talkable import *
 from walls import *
+from enemy import Enemy
 
 
-class Leafy(Npc):
+class Leafy(Enemy):
     images = ["leafy.png", "leafy2.png"]
 
     def __init__(self, location):
@@ -40,7 +41,7 @@ class Leafy(Npc):
         self.kill()
 
 
-class Fleavey(Npc):
+class Fleavey(Enemy):
     images = ["fleavey.png"]
 
     def __init__(self, location):

@@ -34,6 +34,7 @@ from consts import *
 from player import Player
 from npcs import *
 from keys import *
+from monsterguide import MonsterGuide
 
 
 pygame.init()
@@ -73,11 +74,17 @@ while True:
             elif event.key == pygame.K_RIGHT:
                 player.speed = [STEP, 0]
             elif event.key == pygame.K_EQUALS:
-                if pygame.mixer.music.get_volume<1.0:
+                if pygame.mixer.music.get_volume()<1.0:
                     pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()+0.2)
             elif event.key == pygame.K_MINUS:
-                if pygame.mixer.music.get_volume>0.0:
-                    pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()-0.2)
+                if pygame.mixer.music.get_volume()>0.0:
+                    if pygame.mixer.music.get_volume()<0.2:
+                        pygame.mixer.music.set_volume(0)
+                    else:
+                        pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()-0.2)
+            elif event.key == pygame.K_ESCAPE:
+                MonsterGuide(surface=gameboard).show(player.currentfloor)
+                
 
     group_player.update()
     player.currentfloor.group.update()

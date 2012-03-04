@@ -4,9 +4,10 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from enemy import Enemy
 
 
-class MidSoldier(Npc):
+class MidSoldier(Enemy):
     images = ["midsoldier.png", "midsoldier2.png"]
     hp = 420
     money = 10
