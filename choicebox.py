@@ -25,5 +25,5 @@ class Choicebox(pygame.sprite.Sprite):
 				elif event.type == pygame.KEYDOWN:
 					m = d.get(event.key)
 					if m is not None:
-						m()
+						getattr(player, m)()
 					waiting = False

@@ -2,11 +2,13 @@
 #coding=utf-8
 import character
 import pygame
+import sys
 
 from consts import *
 from msgbox import Msgbox
 from floor import Floor
 from npcs import UpStair, DownStair
+from snakes import KingSnake
 
 
 class Player(character.Character):
@@ -74,8 +76,8 @@ class Player(character.Character):
     def weaken(self, damage):
         self.magic -= damage
         if self.magic < 0:
+            self.hurt(damage - self.magic * 3)
             self.magic = 0
-            self.hurt(damage * 2)
 
     def undo(self):
         self.rect = self.oldpos
@@ -92,6 +94,7 @@ class Player(character.Character):
         msgbox = Msgbox("Game over!!! Press RETURN to continue...", (100,100))
         msgbox.show()
         self.kill()
+        sys.exit()
 
     def goto_floor(self, floornum):
         """ 跳转至指定楼层。
@@ -110,7 +113,9 @@ class Player(character.Character):
                 self.rect.left = npc.rect.left + CELL_SIZE
                 self.rect.top = npc.rect.top
                 if self.currentfloor.floornum == 10:
-                    Msgbox("You get here, now. But you can't continue.").show()
+                    if KingSnake.first_ften == True:
+                        Msgbox("You get here, now. But you can't continue.").show()
+                        KingSnake.first_ften = False
 
     def go_downstair(self):
         self.goto_floor(self.currentfloor.floornum-1)
@@ -212,3 +217,15 @@ class Player(character.Character):
             self.level += 3
             self.health += 900
             self.defence += 90
+    
+    def pick_key(self, key):
+        attr = key + 'keynum'
+        setattr(self, attr, getattr(self, attr) + 1)
+    
+    def use_key(self, key):
+        attr = key + 'keynum'
+        keynum = getattr(self, attr)
+        if keynum > 0:
+            setattr(self, attr, keynum - 1)
+            return True
+        return False

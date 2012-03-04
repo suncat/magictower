@@ -3,6 +3,26 @@
 	{
 		"selected_items":
 		[
+			[
+				"f",
+				"from"
+			],
+			[
+				"M",
+				"MiddleDProck"
+			],
+			[
+				"__",
+				"__init__"
+			],
+			[
+				"a",
+				"AbstractDoor"
+			],
+			[
+				"get",
+				"getattr"
+			]
 		]
 	},
 	"buffers":
@@ -11,71 +31,7 @@
 			"file": "magictower.py",
 			"settings":
 			{
-				"buffer_size": 4339,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "character.py",
-			"settings":
-			{
-				"buffer_size": 1116,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "player.py",
-			"settings":
-			{
-				"buffer_size": 5941,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "npc.py",
-			"settings":
-			{
-				"buffer_size": 295,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "npcs.py",
-			"settings":
-			{
-				"buffer_size": 18426,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "consts.py",
-			"settings":
-			{
-				"buffer_size": 1234,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "floor.py",
-			"settings":
-			{
-				"buffer_size": 1003,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "choicebox.py",
-			"settings":
-			{
-				"buffer_size": 802,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "msgbox.py",
-			"settings":
-			{
-				"buffer_size": 1008,
+				"buffer_size": 4326,
 				"line_ending": "Unix"
 			}
 		}
@@ -104,6 +60,29 @@
 	},
 	"file_history":
 	[
+		"/Users/hxj/Documents/MyPrograms/magictower/magictower.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/character.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/player.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/npc.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/npcs.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/shops.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/talkable.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/keys.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/floor.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/choicebox.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/msgbox.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/doors.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/walls.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/soldiers.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/dprocks.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/snakes.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/butterflies.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/stairs.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/drugs.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/magics.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/features.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/consts.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/basesnake.py",
 		"/Library/Python/2.7/site-packages/pygame/sprite.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/setup.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/magictower.sublime-project",
@@ -161,247 +140,15 @@
 					"file": "magictower.py",
 					"settings":
 					{
-						"buffer_size": 4339,
+						"buffer_size": 4326,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2266,
-								2266
-							]
-						],
-						"settings":
-						{
-							"spell_check": false,
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": true,
-							"wrap_width": 0
-						},
-						"translation.x": 0.0,
-						"translation.y": 32.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "character.py",
-					"settings":
-					{
-						"buffer_size": 1116,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1006,
-								1006
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 29.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "player.py",
-					"settings":
-					{
-						"buffer_size": 5941,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1563,
-								1563
-							]
-						],
-						"settings":
-						{
-							"rulers":
-							[
-								78
-							],
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 858.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "npc.py",
-					"settings":
-					{
-						"buffer_size": 295,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								181,
-								181
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "npcs.py",
-					"settings":
-					{
-						"buffer_size": 18426,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6665,
-								6665
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 12171.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "consts.py",
-					"settings":
-					{
-						"buffer_size": 1234,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1227,
-								1227
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "floor.py",
-					"settings":
-					{
-						"buffer_size": 1003,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								938,
-								938
-							]
-						],
-						"settings":
-						{
-							"rulers":
-							[
-								78
-							],
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "choicebox.py",
-					"settings":
-					{
-						"buffer_size": 802,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "msgbox.py",
-					"settings":
-					{
-						"buffer_size": 1008,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								302,
-								302
+								383,
+								383
 							]
 						],
 						"settings":
@@ -452,7 +199,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 140.0
+		"height": 191.0
 	},
 	"replace":
 	{
