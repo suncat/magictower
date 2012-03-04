@@ -71,6 +71,12 @@ while True:
                 player.speed = [-STEP, 0]
             elif event.key == pygame.K_RIGHT:
                 player.speed = [STEP, 0]
+            elif event.key == pygame.K_EQUALS:
+                if pygame.mixer.music.get_volume<1.0:
+                    pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()+0.2)
+            elif event.key == pygame.K_MINUS:
+                if pygame.mixer.music.get_volume>0.0:
+                    pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()-0.2)
 
     group_player.update()
     player.currentfloor.group.update()
