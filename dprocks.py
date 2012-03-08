@@ -4,10 +4,11 @@ import pygame
 from consts import CELL_SIZE
 from npc import Npc
 from msgbox import Msgbox
+from character import load_images
 
 
 class Defencerock(Npc):
-    images = ["defencerock.png"]
+    images = load_images(["defencerock.png"])
     dp = 8
 
     def __init__(self, location):
@@ -19,7 +20,7 @@ class Defencerock(Npc):
 
 
 class MiddleDProck(Defencerock):
-    images = ["middledprock.png"]
+    images = load_images(["middledprock.png"])
     dp = 30
 
     def do_collide(self, player):
@@ -31,5 +32,5 @@ class MiddleDProck(Defencerock):
 
 
 class Largedprock(Defencerock):
-    images = ["largedprock.png"]
+    images = load_images(["largedprock.png"])
     dp = 60

@@ -3,6 +3,7 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from character import load_images
 
 
 class BaseKey(Npc):
@@ -16,25 +17,25 @@ class BaseKey(Npc):
 
 
 class YellowKey(BaseKey):
-    images = ["yellowkey.png"]
+    images = load_images(["yellowkey.png"])
     key = 'y'
 
 
 class BlueKey(BaseKey):
-    images = ["bluekey.png"]
+    images = load_images(["bluekey.png"])
     key = 'b'
 
 
 class RedKey(BaseKey):
-    images = ["redkey.png"]
+    images = load_images(["redkey.png"])
     key = 'r'
 
 
 class GreenKey(BaseKey):
-    images = ["greenkey.png"]
+    images = load_images(["greenkey.png"])
     key = 'g'
 
 
 class NormalGkey(BaseKey):
-    images = ["greenkey.png"]
+    images = load_images(["greenkey.png"])
     key = 'g'

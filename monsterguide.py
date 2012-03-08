@@ -16,11 +16,15 @@ class MonsterGuide(pygame.sprite.Sprite):
         s = set()
         for enemy in floor.group:
             if isinstance(enemy, Enemy):
-                s.add(enemy)
+                s.add(enemy.__class__)
         for i, cls in enumerate(s):
-            self.surface.blit(cls.image, [30, 30 + i * 80])
+            self.surface.blit(pygame.transform.scale(cls.images[0], (80, 80)), [30, 35 + i * 90])
             attackmsg = self.font.render("power: " + str(cls.hp), 1, (0, 0, 0))
-            self.surface.blit(attackmsg, [110, 30 + i * 80])
+            self.surface.blit(attackmsg, [115, 35 + i * 90])
+            moneyexpmsg = self.font.render("money/exp: " + str(cls.money) + " / " + str(cls.exp), 1, (0, 0, 0))
+            self.surface.blit(moneyexpmsg, [115, 65 + i * 90])
+            featuremsg = self.font.render("feature: " + cls.feature, 1, (0, 0, 0))
+            self.surface.blit(featuremsg, [115, 95 + i * 90])
         pygame.display.update()
         waiting = True
         while waiting:

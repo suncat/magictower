@@ -3,10 +3,11 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from character import load_images
 
 
 class Firerock(Npc):
-    images = ["firerock.png"]
+    images = load_images(["firerock.png"])
     feature = "FIRE"
 
     def __init__(self, location):

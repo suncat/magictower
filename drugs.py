@@ -3,10 +3,11 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from character import load_images
 
 
 class Smalldrug(Npc):
-    images = ["smalldrug.png"]
+    images = load_images(["smalldrug.png"])
     heal = 130
 
     def __init__(self, location):
@@ -18,10 +19,10 @@ class Smalldrug(Npc):
 
 
 class Middledrug(Smalldrug):
-    images = ["middledrug.png"]
+    images = load_images(["middledrug.png"])
     heal = 300
 
 
 class Largedrug(Smalldrug):
-    images = ["largedrug.png"]
+    images = load_images(["largedrug.png"])
     heal = 500

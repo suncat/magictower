@@ -3,10 +3,11 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from character import load_images
 
 
 class Smallmagic(Npc):
-    images = ["smallmagic.png"]
+    images = load_images(["smallmagic.png"])
     power = 90
 
     def __init__(self, location):

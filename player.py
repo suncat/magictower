@@ -9,10 +9,11 @@ from msgbox import Msgbox
 from floor import Floor
 from npcs import UpStair, DownStair
 from snakes import KingSnake
+from character import load_images
 
 
 class Player(character.Character):
-    images = ["worior.png", "worior2.png"]
+    images = load_images(["worior.png", "worior2.png"])
 
     def __init__(self, speed, location, gameboard):
         super(Player, self).__init__(location, (CELL_SIZE,CELL_SIZE))
@@ -33,7 +34,7 @@ class Player(character.Character):
         self.money = 0
         self.exp = 0
         self.level = 1
-        STARTFLOOR = 1
+        STARTFLOOR = 4
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 

@@ -3,10 +3,11 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from character import load_images
 
 
 class UpStair(Npc):
-    images = ["upstair.png"]
+    images = load_images(["upstair.png"])
 
     def __init__(self, location):
         super(UpStair, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -16,7 +17,7 @@ class UpStair(Npc):
 
 
 class DownStair(Npc):
-    images = ["downstair.png"]
+    images = load_images(["downstair.png"])
 
     def __init__(self, location):
         super(DownStair, self).__init__(location, (CELL_SIZE, CELL_SIZE))

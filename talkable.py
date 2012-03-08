@@ -4,6 +4,7 @@ import pygame
 from consts import CELL_SIZE
 from npc import Npc
 from msgbox import Msgbox
+from character import load_images
 
 
 class Talkable(Npc):
@@ -18,12 +19,12 @@ class Talkable(Npc):
 
 
 class Oldman(Talkable):
-    images = ["oldman.png"]
+    images = load_images(["oldman.png"])
     msgs = ["Do not think about everything is so easy. Mind traps.",]
 
 
 class Franklin(Talkable):
-    images = ["franklin.png"]
+    images = load_images(["franklin.png"])
     msgs = [
         "My name is Franklin.",
         "And you'll see you have magic sum now.",

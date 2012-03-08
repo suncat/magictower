@@ -5,6 +5,7 @@ import pygame
 import random
 
 from consts import *
+from character import load_images
 from npc import Npc
 from msgbox import Msgbox
 from choicebox import Choicebox
@@ -25,7 +26,8 @@ from enemy import Enemy
 
 
 class Leafy(Enemy):
-    images = ["leafy.png", "leafy2.png"]
+    images = load_images(["leafy.png", "leafy2.png"])
+    feature = 'Grass'
 
     def __init__(self, location):
         super(Leafy, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -42,7 +44,8 @@ class Leafy(Enemy):
 
 
 class Fleavey(Enemy):
-    images = ["fleavey.png"]
+    images = load_images(["fleavey.png"])
+    feature = 'Grass'
 
     def __init__(self, location):
         super(Fleavey, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -73,7 +76,7 @@ class Fleavey(Enemy):
 
 
 class SnakeRock(Npc):
-    images = ["snakerock.png"]
+    images = load_images(["snakerock.png"])
 
     def __init__(self, location):
         super(SnakeRock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -84,7 +87,7 @@ class SnakeRock(Npc):
 
 
 class TopFloorGate(Npc):
-    images = ["topfloorgate.png"]
+    images = load_images(["topfloorgate.png"])
 
     def __init__(self, location):
         super(TopFloorGate, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -100,7 +103,7 @@ class TopFloorGate(Npc):
 
 
 class Trap(Npc):
-    images = ["trap.png"]
+    images = load_images(["trap.png"])
 
     def __init__(self, location):
         super(Trap, self).__init__(location, (CELL_SIZE, CELL_SIZE))

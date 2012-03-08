@@ -3,10 +3,11 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from character import load_images
 
 
 class Wall(Npc):
-    images = ["wall.png"]
+    images = load_images(["wall.png"])
 
     def __init__(self, location):
         super(Wall, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -16,7 +17,7 @@ class Wall(Npc):
 
 
 class Fakewall(Wall):
-    images = ["wall.png"]
+    images = load_images(["wall.png"])
 
     def do_collide(self, player):
         self.kill()

@@ -4,6 +4,7 @@ import pygame
 from consts import CELL_SIZE
 from npc import Npc
 from choicebox import Choicebox
+from character import load_images
 
 
 class Shop(Npc):
@@ -17,7 +18,7 @@ class Shop(Npc):
 
 
 class MoneyShop(Shop):
-    images = ["moneyshop.png"]
+    images = load_images(["moneyshop.png"])
     funcdict = {pygame.K_1:'buy_y', pygame.K_2:'buy_b', pygame.K_3:'buy_r', pygame.K_4:'buy_g'}
     msgs = ["Press 1 to buy a yellow key, $ 20.", 
                 "Press 2 to buy a blue key, $ 30.", 
@@ -27,7 +28,7 @@ class MoneyShop(Shop):
 
 
 class SecondMoney(Shop):
-    images = ["secondmoney.png"]
+    images = load_images(["secondmoney.png"])
     funcdict = {pygame.K_1:'buy_y2', pygame.K_2:'buy_b2', pygame.K_3: 'buy_r2', pygame.K_4:'buy_g2'}
     msgs = ["Press 1 to buy five yellow keys, $ 80.",
                 "Press 2 to buy five blue keys, $ 130.",
@@ -37,7 +38,7 @@ class SecondMoney(Shop):
 
 
 class ExpShop(Shop):
-    images = ["expshop.png"]
+    images = load_images(["expshop.png"])
     funcdict = {pygame.K_1:'buy_smalldr', pygame.K_2:'buy_defrk', pygame.K_3:'buy_snakerk', pygame.K_4:'buy_level'}
     msgs = ["Press 1 to buy a small drug, EXP 20.",
                 "Press 2 to buy a defencerock, EXP 20.",
@@ -47,7 +48,7 @@ class ExpShop(Shop):
 
 
 class SecondExp(Shop):
-    images = ["secondexp.png"]
+    images = load_images(["secondexp.png"])
     funcdict = {pygame.K_1:'buy_largedr', pygame.K_2:'buy_largedef', pygame.K_3:'buy_magic', pygame.K_4:'buy_level2'}
     msgs = ["Press 1 to buy a large drug, EXP 70.",
                 "Press 2 to buy a large defence, EXP 150.",

@@ -10,13 +10,15 @@ from drugs import Middledrug
 from keys import BlueKey
 from msgbox import Msgbox
 from enemy import Enemy
+from character import load_images
 
 
 class Snake(Enemy):
-    images = ["snake.png", "snake2.png"]
+    images = load_images(["snake.png", "snake2.png"])
     hp = 10
-    bonus_money = 1
-    bonus_exp = 1
+    money = 1
+    exp = 1
+    feature = 'None'
 
     def __init__(self, location):
         super(Snake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -25,37 +27,41 @@ class Snake(Enemy):
         self.kill()
         if player.snakerocknum * 13 < self.hp:
             player.hurt(self.hp - player.snakerocknum * 13)
-        player.money += self.bonus_money
-        player.exp += self.bonus_exp
+        player.money += self.money
+        player.exp += self.exp
 
 
 class MiddleSnake(Snake):
-    images = ["middlesnake.png", "middlesnake2.png"]
+    images = load_images(["middlesnake.png", "middlesnake2.png"])
     hp = 105
-    bonus_money = 4
-    bonus_exp = 3
+    money = 4
+    exp = 3
+    feature = 'None'
 
 
 class LargeSnake(Snake):
-    images = ["largesnake.png", "largesnake2.png"]
+    images = load_images(["largesnake.png", "largesnake2.png"])
     hp = 280
-    bonus_money = 8
-    bonus_exp = 8
+    money = 8
+    exp = 8
+    feature = 'None'
 
 
 class MagicSnake(Snake):
-    images = ["magicsnake.png", "magicsnake2.png"]
+    images = load_images(["magicsnake.png", "magicsnake2.png"])
     hp = 300
-    bonus_money = 9
-    bonus_exp = 8
+    money = 9
+    exp = 8
+    feature = 'None'
 
 
 class KingSnake(Snake):
-    images = ["kingsnake.png", "kingsnake2.png"]
+    images = load_images(["kingsnake.png", "kingsnake2.png"])
     hp = 350
-    bonus_money = 10
-    bonus_exp = 10
+    money = 10
+    exp = 10
     first_ften = True
+    feature = 'None'
 
     def do_collide(self, player):
         super(KingSnake, self).do_collide(player)

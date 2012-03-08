@@ -3,6 +3,7 @@ import pygame
 
 from consts import CELL_SIZE
 from npc import Npc
+from character import load_images
 
 
 class AbstractDoor(Npc):
@@ -24,34 +25,34 @@ class KeyDoor(AbstractDoor):
 
 
 class YellowDoor(KeyDoor):
-    images = ["yellowdoor.png"]
+    images = load_images(["yellowdoor.png"])
     key = 'y'
 
 
 class RedDoor(KeyDoor):
-    images = ["reddoor.png"]
+    images = load_images(["reddoor.png"])
     key = 'r'
 
 
 class BlueDoor(KeyDoor):
-    images = ["bluedoor.png"]
+    images = load_images(["bluedoor.png"])
     key = 'b'
 
 
 class GreenDoor(KeyDoor):
-    images = ["greendoor.png"]
+    images = load_images(["greendoor.png"])
     key = 'g'
 
 
 class Specialdoor(AbstractDoor):
-    images =["specialdoor.png"]
+    images = load_images(["specialdoor.png"])
 
     def can_open(self, player):
         return player.on_power
 
 
 class Ftendoor(Npc):
-    images = ["specialdoor.png"]
+    images = load_images(["specialdoor.png"])
 
     def __init__(self, location):
         super(Ftendoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -64,7 +65,7 @@ class Ftendoor(Npc):
 
 
 class Switchdoor(AbstractDoor):
-    images = ["specialdoor.png"]
+    images = load_images(["specialdoor.png"])
 
     def can_open(self, player):
         return False
