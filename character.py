@@ -5,7 +5,7 @@ import pygame
 from consts import *
 
 def load_images(imagefiles):
-    return [pygame.image.load(imagefile) for imagefile in imagefiles]
+    return [pygame.image.load("image/" + imagefile) for imagefile in imagefiles]
 
 class Character(pygame.sprite.Sprite):
 
