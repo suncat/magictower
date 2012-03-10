@@ -1,4 +1,5 @@
 import pygame, sys
+from msgbox import draw_dialog
 
 
 class Choicebox(pygame.sprite.Sprite):
@@ -10,7 +11,7 @@ class Choicebox(pygame.sprite.Sprite):
 		self.x, self.y = location
 
 	def show(self, player, d):
-		pygame.draw.rect(self.surface, [255, 255, 0], [129, 155, 600, 200], 0)
+		draw_dialog(self.surface, [129, 155, 600, 200], [255, 255, 0], [255, 127, 0])
 		y = 155 + self.y
 		for msg in self.msgs:
 			choice_msg = self.font.render(msg, 1, (0, 0, 0))

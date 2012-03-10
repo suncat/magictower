@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import USEREVENT
 
+EVENT_MUSIC_END = USEREVENT + 1
+
 CELL_SIZE = 80
 MAP_ROWS = 6
 MAP_COLS = 8

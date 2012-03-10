@@ -15,20 +15,22 @@ $ 杀死蛇王后，弹出对话框，switchdoors消失。
 $ 实现所有角色的动画效果。
 实现Player的移动动画效果。
 不要直接指定角色的实际位置坐标，而是告诉程序在第几行第几列，由程序自己计算坐标值。
-目前文件太多太乱，不易管理，应该将所有图片文件放到image目录下，所有声音文件放到sound目录下。
+$ 目前文件太多太乱，不易管理，应该将所有图片文件放到image目录下，所有声音文件放到sound目录下。
 $ npcs.py中的类太多，不易管理，应重新设计类之间的继承关系，将不同类型的NPC抽象出几个基类，如Enemy, Stair, Door, Key, Shop, Drug等，在此基础上分别派生出所有的子类，可以有多层继承关系，将子类的共同代码放入基类中，同时将npcs.py按此原则分割为多个模块。
 player死后，显示2个按钮，允许玩家选择重新开始或退出游戏。
 减血时显示血量信息，最好能有动画效果。
 $ 钥匙直接画出来。
 $ 在屏幕上放一个声音开关按钮和音量调节按钮。
-背景音乐随机播放不同的音乐，一首放完后自动切换到另一首。
+$ 背景音乐随机播放不同的音乐，一首放完后自动切换到另一首。
 杀死怪物时播放相应的音响效果。
 将地图存入map.dat文件中，从文件中读取地图，而不是用常量。
 开发一个地图设计程序，可以用鼠标设计地图并保存为map.dat文件。
-MsgBox可以看成ChoiceBox的一种特殊情况，将MsgBox改写为ChoiceBox的子类，同时美化它们的显示效果。
+MsgBox可以看成ChoiceBox的一种特殊情况，将MsgBox改写为ChoiceBox的子类。
+$ 美化MsgBox, ChoiceBox的显示效果。
 """
 import pygame
 import sys
+import random
 
 from consts import *
 from player import Player
@@ -36,6 +38,11 @@ from npcs import *
 from keys import *
 from monsterguide import MonsterGuide
 
+
+def randmusic():
+    music = random.choice(musics)
+    pygame.mixer.music.load("sound/" + music)
+    pygame.mixer.music.play()
 
 pygame.init()
 pygame.mixer.init()
@@ -56,14 +63,17 @@ group_player.add(player)
 
 #group_dic = {}
 
-pygame.mixer.music.load("sound/Michael_Jackson_-_Billie_Jean.ogg")
-pygame.mixer.music.play(-1)
+musics = ["Michael_Jackson_-_Billie_Jean.ogg", ]
+randmusic()
+pygame.mixer.music.set_endevent(EVENT_MUSIC_END)
 
 while True:
     clock.tick(30)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
+        elif event.type == EVENT_MUSIC_END:
+            randmusic()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 player.speed = [0, -STEP]

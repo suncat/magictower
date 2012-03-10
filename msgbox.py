@@ -1,6 +1,14 @@
 import pygame
 import sys
 
+def draw_dialog(surface, rect, rect_color, frame_color, border_width=8, shadow_weight=12):
+    rect = pygame.Rect(rect)
+    frame = pygame.Rect(rect.left - border_width, rect.top - border_width, rect.w + 2 * border_width, rect.h + 2 * border_width)
+    shadow = frame.move(shadow_weight, shadow_weight)
+    pygame.draw.rect(surface, [0, 0, 0], shadow, 0)
+    pygame.draw.rect(surface, frame_color, frame, 0)
+    pygame.draw.rect(surface, rect_color, rect, 0)
+
 
 class Msgbox(pygame.sprite.Sprite):
 
@@ -11,7 +19,7 @@ class Msgbox(pygame.sprite.Sprite):
         self.x, self.y = location
 
     def show(self):
-        pygame.draw.rect(self.surface, [0, 255, 255], [129, 155, 600, 200], 0)
+        draw_dialog(self.surface, (129, 155, 600, 200), (0, 255, 255), (0, 0, 200))
         warn_msg = self.font.render(self.msg, 1, (0, 0, 0))
         self.surface.blit(warn_msg, (129+self.x, 155+self.y))
         msg2 = self.font.render("Press ENTER to continue...", 1, (0, 0, 0))
