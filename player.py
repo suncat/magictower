@@ -21,11 +21,11 @@ class Player(character.Character):
         self.speed = speed
         self.on_power = False
         self.get_top = False
-        self.health = 500
+        self.health = 500111
         self.magic = 200
         self.feature = "NONE"
         self.defence = 0
-        self.ykeynum = 0
+        self.ykeynum = 01
         self.bkeynum = 0
         self.rkeynum = 0
         self.gkeynum = 0
@@ -34,7 +34,7 @@ class Player(character.Character):
         self.money = 0
         self.exp = 0
         self.level = 1
-        STARTFLOOR = 1
+        STARTFLOOR = 6
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
@@ -90,9 +90,9 @@ class Player(character.Character):
     def suicide(self):
         self.health = 0
         pygame.mixer.music.stop()
-        pygame.mixer.music.load("dead.aif")
+        pygame.mixer.music.load("sound/dead.aif")
         pygame.mixer.music.play(1)
-        msgbox = Msgbox("Game over!!! Press RETURN to continue...", (100,100))
+        msgbox = Msgbox("Game over!!!", (100,100))
         msgbox.show()
         self.kill()
         sys.exit()
