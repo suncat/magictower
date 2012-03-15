@@ -15,7 +15,7 @@ from character import load_images
 
 class Snake(Enemy):
     images = load_images(["snake.png", "snake2.png"])
-    hp = 10
+    _hp = 10
     money = 1
     exp = 1
     feature = 'None'
@@ -23,17 +23,14 @@ class Snake(Enemy):
     def __init__(self, location):
         super(Snake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
-    def do_collide(self, player):
-        self.kill()
-        if player.snakerocknum * 13 < self.hp:
-            player.hurt(self.hp - player.snakerocknum * 13)
-        player.money += self.money
-        player.exp += self.exp
+    @classmethod
+    def hp(cls, player):
+        return max(cls._hp - player.snakerocknum * 13, 0)
 
 
 class MiddleSnake(Snake):
     images = load_images(["middlesnake.png", "middlesnake2.png"])
-    hp = 105
+    _hp = 105
     money = 4
     exp = 3
     feature = 'None'
@@ -41,7 +38,7 @@ class MiddleSnake(Snake):
 
 class LargeSnake(Snake):
     images = load_images(["largesnake.png", "largesnake2.png"])
-    hp = 280
+    _hp = 280
     money = 8
     exp = 8
     feature = 'None'
@@ -49,7 +46,7 @@ class LargeSnake(Snake):
 
 class MagicSnake(Snake):
     images = load_images(["magicsnake.png", "magicsnake2.png"])
-    hp = 300
+    _hp = 300
     money = 9
     exp = 8
     feature = 'None'
@@ -57,7 +54,7 @@ class MagicSnake(Snake):
 
 class KingSnake(Snake):
     images = load_images(["kingsnake.png", "kingsnake2.png"])
-    hp = 350
+    _hp = 350
     money = 10
     exp = 10
     first_ften = True

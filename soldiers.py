@@ -18,12 +18,6 @@ class MidSoldier(Enemy):
     def __init__(self, location):
         super(MidSoldier, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
-    def do_collide(self, player):
-        player.hurt(self.hp)
-        player.money += self.money
-        player.exp += self.exp
-        self.kill()
-
 
 class Soldier(MidSoldier):
     images = load_images(["soldier.png", "soldier2.png"])

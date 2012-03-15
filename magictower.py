@@ -93,7 +93,7 @@ while True:
                     else:
                         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()-0.2)
             elif event.key == pygame.K_ESCAPE:
-                MonsterGuide(surface=gameboard).show(player.currentfloor)
+                MonsterGuide(surface=gameboard).show(player, player.currentfloor)
                 
 
     group_player.update()

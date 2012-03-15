@@ -11,7 +11,7 @@ class MonsterGuide(pygame.sprite.Sprite):
         self.surface = surface if surface else pygame.display.get_surface()
         self.x, self.y = location
 
-    def show(self, floor):
+    def show(self, player, floor):
         pygame.draw.rect(self.surface, [0, 255, 255], [0, 0, 640, 480], 0)
         s = set()
         for enemy in floor.group:
@@ -19,7 +19,11 @@ class MonsterGuide(pygame.sprite.Sprite):
                 s.add(enemy.__class__)
         for i, cls in enumerate(s):
             self.surface.blit(pygame.transform.scale(cls.images[0], (80, 80)), [30, 35 + i * 90])
-            attackmsg = self.font.render("power: " + str(cls.hp), 1, (0, 0, 0))
+            if callable(cls.hp):
+                hpval = cls.hp(player)
+            else:
+                hpval = cls.hp
+            attackmsg = self.font.render("power: " + str(hpval), 1, (0, 0, 0))
             self.surface.blit(attackmsg, [115, 35 + i * 90])
             moneyexpmsg = self.font.render("money/exp: " + str(cls.money) + " / " + str(cls.exp), 1, (0, 0, 0))
             self.surface.blit(moneyexpmsg, [115, 65 + i * 90])

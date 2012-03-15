@@ -18,13 +18,6 @@ class Butterfly(Enemy):
     def __init__(self, location):
         super(Butterfly, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
-    def do_collide(self, player):
-        self.kill()
-        player.hurt(self.hp)
-        player.money += self.money
-        player.exp += self.exp
-            
-
 
 class MidButterfly(Butterfly):
     images = load_images(["midbutterfly.png", "midbutterfly2.png"])

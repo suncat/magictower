@@ -9,6 +9,7 @@ from character import load_images
 from npc import Npc
 from msgbox import Msgbox
 from choicebox import Choicebox
+
 from snakes import *
 from butterflies import *
 from soldiers import *
@@ -36,14 +37,11 @@ class Leafy(Enemy):
         super(Leafy, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
-        player.hurt(self.hp)
-        if player.feature == "FIRE":
+        if player.feature in ["FIRE", "SKY", "SNOW"]:
             player.weaken(10)
         else:
             player.weaken(20)
-        player.money += self.money
-        player.exp += self.exp
-        self.kill()
+        super(Leafy, self).do_collide(player)
 
 
 class Fleavey(Enemy):
@@ -71,16 +69,13 @@ class Fleavey(Enemy):
                 player.weaken(100)
             if player.defence < 0:
                 player.defence = 0
-        player.hurt(self.hp)
         if player.feature in ["FIRE", "SKY", "SNOW"]:
             player.weaken(40)
         elif player.feature in ["WATER", "ELECTRIC"]:
             player.weaken(160)
         else:
             player.weaken(80)
-        player.money += self.money
-        player.exp += self.exp
-        self.kill()
+        super(Fleavey, self).do_collide(player)
 
 
 class SnakeRock(Npc):
