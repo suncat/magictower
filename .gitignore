@@ -1,1 +1,5 @@
 *.pyc
+*.MP3
+*.aiff
+*.wav
+*.flac

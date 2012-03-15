@@ -26,6 +26,9 @@ from enemy import Enemy
 
 
 class Leafy(Enemy):
+    hp = 500
+    money = 13
+    exp = 12
     images = load_images(["leafy.png", "leafy2.png"])
     feature = 'Grass'
 
@@ -33,18 +36,21 @@ class Leafy(Enemy):
         super(Leafy, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
-        player.hurt(500)
+        player.hurt(self.hp)
         if player.feature == "FIRE":
             player.weaken(10)
         else:
             player.weaken(20)
-        player.money += 13
-        player.exp += 12
+        player.money += self.money
+        player.exp += self.exp
         self.kill()
 
 
 class Fleavey(Enemy):
-    images = load_images(["fleavey.png"])
+    hp = 560
+    money = 15
+    exp = 15
+    images = load_images(["fleavey.png", "fleavey2.png"])
     feature = 'Grass'
 
     def __init__(self, location):
@@ -57,21 +63,23 @@ class Fleavey(Enemy):
             Msgbox("The skill missed!").show()
         else:
             player.defence -= 50
-            if player.feature == "FIRE":
+            if player.feature in ["FIRE", "SKY", "SNOW"]:
                 player.weaken(50)
+            elif player.feature in ["WATER", "ELECTRIC"]:
+                player.weaken(200)
             else:
                 player.weaken(100)
-            player.hurt(560)
             if player.defence < 0:
                 player.defence = 0
-            player.flash_image("greenairshotwor.png", 2000)
-        player.hurt(560)
-        if player.feature == "FIRE":
+        player.hurt(self.hp)
+        if player.feature in ["FIRE", "SKY", "SNOW"]:
             player.weaken(40)
+        elif player.feature in ["WATER", "ELECTRIC"]:
+            player.weaken(160)
         else:
             player.weaken(80)
-        player.money += 15
-        player.exp += 15
+        player.money += self.money
+        player.exp += self.exp
         self.kill()
 
 
@@ -111,6 +119,20 @@ class Trap(Npc):
     def do_collide(self, player):
         self.kill()
         player.suicide()
+
+
+class SKeyKiller(Npc):
+    images = load_images(["skeykiller.png"])
+
+    def __init__(self, location):
+        super(SKeyKiller, self).__init__(location, (CELL_SIZE, CELL_SIZE))
+
+    def do_collide(self, player):
+        if player.speed != [0, 0]:
+            player.ykeynum = player.ykeynum - 1 if player.ykeynum > 0 else 0
+            player.bkeynum = player.bkeynum - 1 if player.bkeynum > 0 else 0
+            player.rkeynum = player.rkeynum - 1 if player.rkeynum > 0 else 0
+            player.gkeynum = player.gkeynum - 1 if player.gkeynum > 0 else 0
 
 NPC_DICT = {
     '1': Wall,
@@ -156,5 +178,11 @@ NPC_DICT = {
     'G': Fleavey,
     'H': Firerock,
     'I': SecondMoney,
-    'J': SecondExp
+    'J': SecondExp,
+    'K': LargeButterfly,
+    'L': LightButterfly,
+    'M': SwordKey,
+    'N': SKeyKiller,
+    'O': Aquarock,
+    'P': Skyrock
 }

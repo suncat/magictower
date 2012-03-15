@@ -29,12 +29,13 @@ class Player(character.Character):
         self.bkeynum = 0
         self.rkeynum = 0
         self.gkeynum = 0
+        self.swordkeynum = 0
         self.snakedp = 0
         self.snakerocknum = 0
         self.money = 0
         self.exp = 0
         self.level = 1
-        STARTFLOOR = 6
+        STARTFLOOR = 13
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
@@ -61,12 +62,13 @@ class Player(character.Character):
                 pygame.time.delay(500)
         """
         self.rect.move_ip(self.speed)
-        self.speed = [0, 0]
         if self.is_out():
             self.rect = self.oldpos
 
         for npc in pygame.sprite.spritecollide(self, self.currentfloor.group, dokill=False):
             npc.do_collide(self)
+
+        self.speed = [0, 0]
         if self.is_dead():
             self.suicide()
 

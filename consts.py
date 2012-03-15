@@ -26,4 +26,5 @@ ALLMAP = (
     ["11111111", "1syaays1", "1y1111y1", "1z1001z1", "1y1001y1", "40B00BA3"],
     ["q1p11Co3", "E1EE11u1", "oo1u1bE1", "u1FoEC0E", "qu11111u", "40C0o0DF"],
     ["IG1C1Euq", "1EuduF1z", "JG1H1013", "11111E11", "Fr1qC01C", "400E1Gd6"],
+    ["LM1C1q1F", "v11z1KNK", "vG1G11u1", "GEuNOuEF", "111P1111", "40G0uN03"],
     )

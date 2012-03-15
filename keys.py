@@ -39,3 +39,8 @@ class GreenKey(BaseKey):
 class NormalGkey(BaseKey):
     images = load_images(["greenkey.png"])
     key = 'g'
+
+
+class SwordKey(BaseKey):
+    images = load_images(["swordkey.png"])
+    key = 'sword'

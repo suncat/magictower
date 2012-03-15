@@ -16,3 +16,13 @@ class Firerock(Npc):
     def do_collide(self, player):
         player.feature = self.feature
         self.kill()
+
+
+class Aquarock(Firerock):
+	images = load_images(["aquarock.png"])
+	feature = "WATER"
+
+
+class Skyrock(Firerock):
+	images = load_images(["skyrock.png"])
+	feature = "SKY"
