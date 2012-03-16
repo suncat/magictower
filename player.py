@@ -21,14 +21,14 @@ class Player(character.Character):
         self.speed = speed
         self.on_power = False
         self.get_top = False
-        self.health = 500111
-        self.magic = 200
+        self.health = 500000
+        self.magic = 200000
         self.feature = "NONE"
-        self.defence = 0
-        self.ykeynum = 01
-        self.bkeynum = 0
-        self.rkeynum = 0
-        self.gkeynum = 0
+        self.defence = 100000
+        self.ykeynum = 100
+        self.bkeynum = 100
+        self.rkeynum = 100
+        self.gkeynum = 100
         self.swordkeynum = 0
         self.snakedp = 0
         self.snakerocknum = 0
@@ -127,7 +127,7 @@ class Player(character.Character):
                 if self.currentfloor.floornum == 7:
                     self.rect.left = npc.rect.left + CELL_SIZE
                     self.rect.top = npc.rect.top
-                elif self.currentfloor.floornum == 8:
+                elif self.currentfloor.floornum in [8, 12]:
                     self.rect.left = npc.rect.left
                     self.rect.top = npc.rect.top - CELL_SIZE
                 elif self.currentfloor.floornum == 9:

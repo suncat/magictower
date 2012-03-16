@@ -1,11 +1,13 @@
 # coding:utf8
 from __future__ import absolute_import
 import pygame
+import random
 
 from consts import CELL_SIZE
 from npc import Npc
 from enemy import Enemy
 from character import load_images
+from msgbox import Msgbox
 
 
 class Butterfly(Enemy):
