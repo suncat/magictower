@@ -17,6 +17,7 @@ class Butterfly(Enemy):
     exp = 2
     feature = 'None'
     skill = "NO"
+    condition = "NORMAL"
 
     def __init__(self, location):
         super(Butterfly, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -29,6 +30,7 @@ class MidButterfly(Butterfly):
     exp = 4
     feature = 'None'
     skill = "NO"
+    condition = "NORMAL"
 
 
 class LargeButterfly(Butterfly):
@@ -38,6 +40,7 @@ class LargeButterfly(Butterfly):
     exp = 13
     feature = 'None'
     skill = "NO"
+    condition = "NORMAL"
 
 
 class LightButterfly(Butterfly):
@@ -47,6 +50,7 @@ class LightButterfly(Butterfly):
     exp = 19
     feature = 'LIGHT'
     skill = "LIGHTNING-BOMB"
+    condition = "NORMAL"
 
     def do_collide(self, player):
         Msgbox("Skill: Lightning-Bomb! Be careful!").show()

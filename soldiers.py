@@ -15,6 +15,7 @@ class MidSoldier(Enemy):
     exp = 10
     feature = 'None'
     skill = "NO"
+    condition = "NORMAL"
 
     def __init__(self, location):
         super(MidSoldier, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -28,6 +29,7 @@ class Soldier(MidSoldier):
     exp = 9
     feature = 'None'
     skill = "NO"
+    condition = "NORMAL"
 
     def do_collide(self, player):
         super(Soldier, self).do_collide(player)
@@ -43,3 +45,4 @@ class LargeSoldier(MidSoldier):
     exp = 12
     feature = 'None'
     skill = "NO"
+    condition = "NORMAL"

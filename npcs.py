@@ -33,6 +33,7 @@ class Leafy(Enemy):
     images = load_images(["leafy.png", "leafy2.png"])
     feature = 'Grass'
     skill = "NO"
+    condition = "NORMAL"
 
     def __init__(self, location):
         super(Leafy, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -52,6 +53,7 @@ class Fleavey(Enemy):
     images = load_images(["fleavey.png", "fleavey2.png"])
     feature = 'Grass'
     skill = "GREEN AIR-SHOT"
+    condition = "NORMAL"
 
     def __init__(self, location):
         super(Fleavey, self).__init__(location, (CELL_SIZE, CELL_SIZE))

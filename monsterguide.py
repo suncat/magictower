@@ -23,14 +23,18 @@ class MonsterGuide(pygame.sprite.Sprite):
                 hpval = cls.hp(player)
             else:
                 hpval = cls.hp
-            attackmsg = self.font.render("power: " + str(hpval), 1, (255, 0, 0))
+            attackmsg = self.font.render("power: %d" % hpval, 1, (255, 0, 0))
             self.surface.blit(attackmsg, [115, 35 + i * 90])
-            moneyexpmsg = self.font.render("money/exp: " + str(cls.money) + " / " + str(cls.exp), 1, (255, 0, 0))
+            moneyexpmsg = self.font.render("money/exp: %d/%d" % (cls.money, cls.exp), 1, (255, 255, 0))
             self.surface.blit(moneyexpmsg, [115, 65 + i * 90])
-            featuremsg = self.font.render("feature: " + cls.feature, 1, (255, 0, 0))
+            featuremsg = self.font.render("feature: %s" % cls.feature, 1, (0, 0, 255))
             self.surface.blit(featuremsg, [115, 95 + i * 90])
-            namemsg = self.font.render(cls.__name__, 1, (255, 0, 0))
+            namemsg = self.font.render("name: %s" % cls.__name__, 1, (0, 255, 0))
             self.surface.blit(namemsg, [320, 35 + i * 90])
+            skillmsg = self.font.render("skill: %s" % cls.skill, 1, (255, 0, 255))
+            self.surface.blit(skillmsg, [320, 65 + i * 90])
+            condmsg = self.font.render("condition: %s" % cls.condition, 1, (0, 255, 255))
+            self.surface.blit(condmsg, [320, 95 + i * 90])
         pygame.display.update()
         waiting = True
         while waiting:
