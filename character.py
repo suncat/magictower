@@ -6,7 +6,7 @@ import os.path
 from consts import *
 
 def load_images(imagefiles):
-    return [pygame.image.load(os.path.join("image", imagefile)).convert_alpha() for imagefile in imagefiles]
+    return [pygame.image.load(os.path.join("image", imagefile)) for imagefile in imagefiles]
 
 class Character(pygame.sprite.Sprite):
 
