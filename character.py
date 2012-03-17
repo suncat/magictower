@@ -1,11 +1,12 @@
 #! /usr/bin/env python
 #coding=utf-8
 import pygame
+import os.path
 
 from consts import *
 
 def load_images(imagefiles):
-    return [pygame.image.load("image/" + imagefile).convert_alpha() for imagefile in imagefiles]
+    return [pygame.image.load(os.path.join("image", imagefile)).convert_alpha() for imagefile in imagefiles]
 
 class Character(pygame.sprite.Sprite):
 

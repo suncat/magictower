@@ -1,18 +1,18 @@
 #! /usr/bin/env python
 #coding=utf-8
-import character
 import pygame
 import sys
+import os.path
 
 from consts import *
 from msgbox import Msgbox
 from floor import Floor
 from npcs import UpStair, DownStair
 from snakes import KingSnake
-from character import load_images
+from character import load_images, Character
 
 
-class Player(character.Character):
+class Player(Character):
     images = load_images(["worior.png", "worior2.png"])
 
     def __init__(self, speed, location, gameboard):
@@ -92,7 +92,7 @@ class Player(character.Character):
     def suicide(self):
         self.health = 0
         pygame.mixer.music.stop()
-        pygame.mixer.music.load("sound/dead.aif")
+        pygame.mixer.music.load(os.path.join("sound","dead.aif"))
         pygame.mixer.music.play(1)
         msgbox = Msgbox("Game over!!!", (100,100))
         msgbox.show()
