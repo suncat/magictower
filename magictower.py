@@ -34,10 +34,6 @@ import sys
 import random
 
 from consts import *
-from player import Player
-from npcs import *
-from keys import *
-from monsterguide import MonsterGuide
 
 
 def randmusic():
@@ -59,6 +55,11 @@ textboard = screen.subsurface(0, 0, TEXTBOARD_WIDTH, TEXTBOARD_HEIGHT)
 gameboard = screen.subsurface(TEXTBOARD_WIDTH, 0, GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT)
 #pygame.time.delay(1000)
 
+from player import Player
+from npcs import *
+from keys import *
+from monsterguide import MonsterGuide
+
 initspeed = [0, 0]
 player = Player(initspeed, (CELL_SIZE/2, MAP_ROWS*CELL_SIZE-CELL_SIZE/2),gameboard)
 group_player = pygame.sprite.Group()
@@ -68,6 +69,12 @@ group_player.add(player)
 
 musics = ["Michael_Jackson_-_Billie_Jean.ogg", "Michael_Jackson_Thriller.ogg", "Michael_Jackson_-_Beat_It.ogg"]
 randmusic()
+
+font = pygame.font.Font(None, 30)
+ykey = YellowKey([10, 130], (25, 25))
+bkey = BlueKey([10, 160], (25, 25))
+rkey = RedKey([10, 190], (25, 25))
+gkey = GreenKey([10, 220], (25, 25))
 
 while True:
     clock.tick(30)
@@ -99,7 +106,7 @@ while True:
     
     group_player.update()
     player.currentfloor.group.update()
-
+    
     # 填充背景
     gameboard.fill([255, 255, 255])
     textboard.fill([120, 120, 120])
@@ -107,8 +114,8 @@ while True:
     group_player.draw(gameboard)
     # 画当前楼层地图
     player.currentfloor.group.draw(gameboard)
+    
     # 显示体力
-    font = pygame.font.Font(None, 30)
     health_text = font.render("health: " + str(player.health), 1, (255, 0, 255))
     textpos = [10, 10]
     textboard.blit(health_text, textpos)
@@ -121,25 +128,21 @@ while True:
     textpos3 = [10, 70]
     textboard.blit(floor_text, textpos3)
     # 显示黄钥匙
-    ykey = YellowKey([10, 130], (25, 25))
     textboard.blit(ykey.image, [10, 130])
     key_text = font.render(str(player.ykeynum), 1, (255, 255, 0))
     textpos4 = [40, 130]
     textboard.blit(key_text, textpos4)
     #显示蓝钥匙
-    bkey = BlueKey([10, 160], (25, 25))
     textboard.blit(bkey.image, [10, 160])
     key_text2 = font.render(str(player.bkeynum), 1, (0, 0, 255))
     textpos7 = [40, 160]
     textboard.blit(key_text2, textpos7)
     #显示红钥匙
-    rkey = RedKey([10, 190], (25, 25))
     textboard.blit(rkey.image, [10, 190])
     key_text3 = font.render(str(player.rkeynum), 1, (255, 0, 0))
     textpos8 = [40, 190]
     textboard.blit(key_text3, textpos8)
     #显示绿钥匙
-    gkey = GreenKey([10, 220], (25, 25))
     textboard.blit(gkey.image, [10, 220])
     key_text4 = font.render(str(player.gkeynum), 1, (0, 255, 0))
     textpos9 = [40, 220]
@@ -170,5 +173,6 @@ while True:
         ft_text = font.render("feature: " + str(player.feature), 1, (150, 200, 0))
         ftpos = [10, 370]
         textboard.blit(ft_text, ftpos)
+    
     # 刷新屏幕
     pygame.display.flip()
