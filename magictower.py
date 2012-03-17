@@ -8,6 +8,7 @@ player死后，显示2个按钮，允许玩家选择重新开始或退出游戏�
 杀死怪物时播放相应的音响效果。
 将地图存入map.dat文件中，从文件中读取地图，而不是用常量。
 开发一个地图设计程序，可以用鼠标设计地图并保存为map.dat文件。
+msgbox显示时音乐不循环。
 """
 from __future__ import absolute_import
 import pygame
