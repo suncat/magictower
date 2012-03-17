@@ -131,6 +131,6 @@ class MagicTowerGame(Game):
             textboard.blit(ft_text, ftpos)
         
 if __name__ == '__main__':
-    game = MagicTowerGame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    game = MagicTowerGame(SCREEN_WIDTH, SCREEN_HEIGHT, fps=15)
     games['DEFAULTGAME'] = game
     game.run()

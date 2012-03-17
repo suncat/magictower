@@ -14,15 +14,6 @@ class Talkable(Npc):
         self.index = -1
 
     def do_collide(self, player):
-        #if self.index >= 0:
-        #    if not self.dlg.closed:
-        #        return
-        #    if self.index == len(self.msgs) - 1:
-        #        self.kill()
-        #        return
-        #self.index += 1
-        #self.dlg = Msgbox(self.msgs[self.index])
-        #self.dlg.show()
         for msg in self.msgs:
             Msgbox(msg).show()
         self.kill()
