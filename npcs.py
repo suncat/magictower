@@ -183,5 +183,6 @@ NPC_DICT = {
     'M': SwordKey,
     'N': SKeyKiller,
     'O': Aquarock,
-    'P': Skyrock
+    'P': Skyrock,
+    'Q': Exlargedrug,
 }

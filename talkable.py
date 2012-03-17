@@ -34,3 +34,21 @@ class Franklin(Talkable):
         "The Leafies have leaf-feature.",
         "I just can tell you these informations. Good luck.",
         ]
+
+    def do_collide(self, player):
+        if player.currentfloor.floornum == 11:
+            super(Franklin, self).do_collide(self)
+        elif player.currentfloor.floornum == 14:
+            self.msgs = [
+                "Worior: It's you! We're meet again!",
+                "Franklin: Yep. I just want to tell you about the sword.",
+                "Worior: The sword on the 13th floor?",
+                "Franklin: You know it! You will use it to open a strange door.",
+                "Worior: Which door?",
+                "Franklin: It is...",
+                "(Suddenly some smelly grass-smells come.)",
+                "Franklin: Sorry, I can't bear the grass smell here. I must go.",
+                "Worior: Oh no, please wait...",
+                "Worior: Dad gone it! I must look for him later.",
+                ]
+            super(Franklin, self).do_collide(self)

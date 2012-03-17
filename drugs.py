@@ -26,3 +26,8 @@ class Middledrug(Smalldrug):
 class Largedrug(Smalldrug):
     images = load_images(["largedrug.png"])
     heal = 500
+
+
+class Exlargedrug(Smalldrug):
+    images = load_images(["exlargedrug.png"])
+    heal = 650

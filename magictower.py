@@ -29,6 +29,7 @@ player死后，显示2个按钮，允许玩家选择重新开始或退出游戏�
 开发一个地图设计程序，可以用鼠标设计地图并保存为map.dat文件。
 """
 import pygame
+import os.path
 import sys
 import random
 
@@ -40,9 +41,11 @@ from monsterguide import MonsterGuide
 
 
 def randmusic():
-    music = random.choice(musics)
-    pygame.mixer.music.load("sound/" + music)
-    pygame.mixer.music.play()
+    global musics
+    if not pygame.mixer.music.get_busy():
+        music = random.choice(musics)
+        pygame.mixer.music.load(os.path.join("sound", music))
+        pygame.mixer.music.play()
 
 pygame.init()
 pygame.mixer.init()
@@ -65,15 +68,12 @@ group_player.add(player)
 
 musics = ["Michael_Jackson_-_Billie_Jean.ogg", "Michael_Jackson_Thriller.ogg", "Michael_Jackson_-_Beat_It.ogg"]
 randmusic()
-pygame.mixer.music.set_endevent(EVENT_MUSIC_END)
 
 while True:
     clock.tick(30)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        elif event.type == EVENT_MUSIC_END:
-            randmusic()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
                 player.speed = [0, -STEP]
@@ -95,7 +95,8 @@ while True:
             elif event.key == pygame.K_ESCAPE:
                 MonsterGuide(surface=gameboard).show(player, player.currentfloor)
                 
-
+    randmusic()
+    
     group_player.update()
     player.currentfloor.group.update()
 

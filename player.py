@@ -35,7 +35,7 @@ class Player(character.Character):
         self.money = 0
         self.exp = 0
         self.level = 1
-        STARTFLOOR = 13
+        STARTFLOOR = 14
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
