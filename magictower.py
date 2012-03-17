@@ -6,9 +6,9 @@
 player死后，显示2个按钮，允许玩家选择重新开始或退出游戏。
 减血时显示血量信息，最好能有动画效果。
 杀死怪物时播放相应的音响效果。
-将地图存入map.dat文件中，从文件中读取地图，而不是用常量。
+$ 将地图存入map/floorxxx.dat文件中，从文件中读取地图，而不是用常量。
 开发一个地图设计程序，可以用鼠标设计地图并保存为map.dat文件。
-msgbox显示时音乐不循环。
+$ msgbox显示时音乐不循环。
 """
 from __future__ import absolute_import
 import pygame

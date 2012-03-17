@@ -1,6 +1,8 @@
 #! /usr/bin/env python
 #coding=utf-8
+from __future__ import with_statement
 import pygame
+import os.path
 
 from consts import *
 from npcs import NPC_DICT
@@ -9,15 +11,17 @@ from npcs import *
 
 class Floor:
 
-    def __init__(self, floornum, m):
+    def __init__(self, floornum):
         self.floornum = floornum
         self.group = pygame.sprite.Group()
         self.group_gk = pygame.sprite.Group()
         self.group_door = pygame.sprite.Group()
         self.group_ften = pygame.sprite.Group()
-        self.loadmap(m)
+        self.loadmap()
 
-    def loadmap(self, m):
+    def loadmap(self):
+        with open(os.path.join('map', 'floor%03d.dat' % self.floornum)) as f:
+            m = f.readlines()
         for i in range(MAP_ROWS):
             for j in range(MAP_COLS):
                 loc = (j * CELL_SIZE + CELL_SIZE/2, 

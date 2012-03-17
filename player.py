@@ -38,7 +38,7 @@ class Player(Character):
         self.exp = 1000
         self.level = 1
         STARTFLOOR = 14
-        self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
+        self.currentfloor = Floor(STARTFLOOR)
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
     def is_out(self):
@@ -107,7 +107,7 @@ class Player(Character):
         """
         f = self.visited_floors.get(floornum)
         if f is None:
-            f = Floor(floornum, ALLMAP[floornum-1])
+            f = Floor(floornum)
             self.visited_floors[floornum] = f
         self.root.remove(self.currentfloor.group)
         self.currentfloor = f
