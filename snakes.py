@@ -19,6 +19,7 @@ class Snake(Enemy):
     money = 1
     exp = 1
     feature = 'None'
+    skill = "NO"
 
     def __init__(self, location):
         super(Snake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -34,6 +35,7 @@ class MiddleSnake(Snake):
     money = 4
     exp = 3
     feature = 'None'
+    skill = "NO"
 
 
 class LargeSnake(Snake):
@@ -42,6 +44,7 @@ class LargeSnake(Snake):
     money = 8
     exp = 8
     feature = 'None'
+    skill = "NO"
 
 
 class MagicSnake(Snake):
@@ -50,6 +53,7 @@ class MagicSnake(Snake):
     money = 9
     exp = 8
     feature = 'None'
+    skill = "NO"
 
 
 class KingSnake(Snake):
@@ -59,6 +63,7 @@ class KingSnake(Snake):
     exp = 10
     first_ften = True
     feature = 'None'
+    skill = "NO"
 
     def do_collide(self, player):
         super(KingSnake, self).do_collide(player)

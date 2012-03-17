@@ -14,6 +14,7 @@ class MidSoldier(Enemy):
     money = 10
     exp = 10
     feature = 'None'
+    skill = "NO"
 
     def __init__(self, location):
         super(MidSoldier, self).__init__(location, (CELL_SIZE, CELL_SIZE))
@@ -26,6 +27,7 @@ class Soldier(MidSoldier):
     money = 9
     exp = 9
     feature = 'None'
+    skill = "NO"
 
     def do_collide(self, player):
         super(Soldier, self).do_collide(player)
@@ -40,3 +42,4 @@ class LargeSoldier(MidSoldier):
     money = 12
     exp = 12
     feature = 'None'
+    skill = "NO"

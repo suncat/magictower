@@ -29,6 +29,8 @@ class MonsterGuide(pygame.sprite.Sprite):
             self.surface.blit(moneyexpmsg, [115, 65 + i * 90])
             featuremsg = self.font.render("feature: " + cls.feature, 1, (255, 0, 0))
             self.surface.blit(featuremsg, [115, 95 + i * 90])
+            namemsg = self.font.render(cls.__name__, 1, (255, 0, 0))
+            self.surface.blit(namemsg, [320, 35 + i * 90])
         pygame.display.update()
         waiting = True
         while waiting:

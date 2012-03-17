@@ -63,7 +63,7 @@ group_player.add(player)
 
 #group_dic = {}
 
-musics = ["Michael_Jackson_-_Billie_Jean.ogg", ]
+musics = ["Michael_Jackson_-_Billie_Jean.ogg", "Michael_Jackson_Thriller.ogg", "Michael_Jackson_-_Beat_It.ogg"]
 randmusic()
 pygame.mixer.music.set_endevent(EVENT_MUSIC_END)
 
