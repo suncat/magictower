@@ -14,7 +14,7 @@ class Shop(Npc):
 
     def do_collide(self, player):
         player.undo()
-        Choicebox(self.msgs).show(player, self.funcdict)
+        Choicebox(self.msgs, keydict=self.funcdict).show()
 
 
 class MoneyShop(Shop):

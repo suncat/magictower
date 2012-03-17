@@ -15,8 +15,10 @@ from character import load_images, Character
 class Player(Character):
     images = load_images(["worior.png", "worior2.png"])
 
-    def __init__(self, speed, location, gameboard):
+    def __init__(self, game, speed, location, gameboard):
         super(Player, self).__init__(location, (CELL_SIZE,CELL_SIZE))
+        self.game = game
+        self.root = game.root
         self.gameboard = gameboard
         self.speed = speed
         self.on_power = False
@@ -32,8 +34,8 @@ class Player(Character):
         self.swordkeynum = 0
         self.snakedp = 0
         self.snakerocknum = 0
-        self.money = 0
-        self.exp = 0
+        self.money = 1000
+        self.exp = 1000
         self.level = 1
         STARTFLOOR = 14
         self.currentfloor = Floor(STARTFLOOR, ALLMAP[STARTFLOOR-1])
@@ -107,7 +109,9 @@ class Player(Character):
         if f is None:
             f = Floor(floornum, ALLMAP[floornum-1])
             self.visited_floors[floornum] = f
+        self.root.remove(self.currentfloor.group)
         self.currentfloor = f
+        self.root.add(self.currentfloor.group)
 
     def go_upstair(self):
         self.goto_floor(self.currentfloor.floornum+1)

@@ -29,7 +29,7 @@ class Character(pygame.sprite.Sprite):
         pygame.time.delay(delaytime)
         self.image = save
 
-    def update(self):
+    def animate(self):
         self.update_counter -= 1
         if self.update_counter ==0:
             self.image = self.next_image()

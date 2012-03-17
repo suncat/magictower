@@ -1,6 +1,10 @@
 import pygame
 from pygame.locals import USEREVENT
 
+games = {}
+def get_game():
+    return games.get('DEFAULTGAME')
+
 CELL_SIZE = 80
 MAP_ROWS = 6
 MAP_COLS = 8

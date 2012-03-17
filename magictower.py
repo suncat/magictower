@@ -32,9 +32,9 @@ class MagicTowerGame(Game):
         self.gameboard = self.screen.subsurface(TEXTBOARD_WIDTH, 0, GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT)
         
         initspeed = [0, 0]
-        self.player = Player(initspeed, (CELL_SIZE/2, MAP_ROWS*CELL_SIZE-CELL_SIZE/2), self.gameboard)
-        self.group_player = pygame.sprite.Group()
-        self.group_player.add(self.player)
+        self.player = Player(self, initspeed, (CELL_SIZE/2, MAP_ROWS*CELL_SIZE-CELL_SIZE/2), self.gameboard)
+        self.root.add(self.player)
+        self.root.add(self.player.currentfloor.group)
                 
         self.ykey = YellowKey([10, 130], (25, 25))
         self.bkey = BlueKey([10, 160], (25, 25))
@@ -61,23 +61,16 @@ class MagicTowerGame(Game):
                     else:
                         pygame.mixer.music.set_volume(pygame.mixer.music.get_volume()-0.2)
             elif event.key == pygame.K_ESCAPE:
-                MonsterGuide(surface=self.gameboard).show(self.player, self.player.currentfloor)
-        
-    def update(self):
-        self.group_player.update()
-        self.player.currentfloor.group.update()
-        
+                MonsterGuide(surface=self.gameboard).show()
+ 
     def draw(self):
         gameboard = self.gameboard
         textboard = self.textboard
         # 填充背景
         gameboard.fill([255, 255, 255])
         textboard.fill([120, 120, 120])
-        # 画人
-        self.group_player.draw(gameboard)
-        # 画当前楼层地图
-        self.player.currentfloor.group.draw(gameboard)
-        
+        # 画人和前楼层地图
+        self.root.draw(gameboard)
         # 显示体力
         health_text = font.render("health: " + str(self.player.health), 1, (255, 0, 255))
         textpos = [10, 10]
@@ -139,4 +132,5 @@ class MagicTowerGame(Game):
         
 if __name__ == '__main__':
     game = MagicTowerGame(SCREEN_WIDTH, SCREEN_HEIGHT)
+    games['DEFAULTGAME'] = game
     game.run()

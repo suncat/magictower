@@ -11,12 +11,21 @@ class Talkable(Npc):
 
     def __init__(self, location):
         super(Talkable, self).__init__(location, (CELL_SIZE, CELL_SIZE))
+        self.index = -1
 
     def do_collide(self, player):
+        #if self.index >= 0:
+        #    if not self.dlg.closed:
+        #        return
+        #    if self.index == len(self.msgs) - 1:
+        #        self.kill()
+        #        return
+        #self.index += 1
+        #self.dlg = Msgbox(self.msgs[self.index])
+        #self.dlg.show()
         for msg in self.msgs:
             Msgbox(msg).show()
         self.kill()
-
 
 class Oldman(Talkable):
     images = load_images(["oldman.png"])
@@ -37,7 +46,7 @@ class Franklin(Talkable):
 
     def do_collide(self, player):
         if player.currentfloor.floornum == 11:
-            super(Franklin, self).do_collide(self)
+            super(Franklin, self).do_collide(player)
         elif player.currentfloor.floornum == 14:
             self.msgs = [
                 "Worior: It's you! We're meet again!",
@@ -51,4 +60,4 @@ class Franklin(Talkable):
                 "Worior: Oh no, please wait...",
                 "Worior: Dad gone it! I must look for him later.",
                 ]
-            super(Franklin, self).do_collide(self)
+            super(Franklin, self).do_collide(player)
