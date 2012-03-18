@@ -14,7 +14,7 @@ from __future__ import absolute_import
 import pygame
 
 from consts import *
-from game import Game
+from engine import Game
 from player import Player
 from keys import *
 from monsterguide import MonsterGuide

@@ -10,9 +10,6 @@ class Firerock(Npc):
     images = load_images(["firerock.png"])
     feature = "FIRE"
 
-    def __init__(self, location):
-        super(Firerock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         player.feature = self.feature
         self.kill()

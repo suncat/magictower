@@ -9,7 +9,7 @@ from npcs import NPC_DICT
 from npcs import *
 
 
-class Floor:
+class Floor(object):
 
     def __init__(self, floornum):
         self.floornum = floornum
@@ -22,6 +22,7 @@ class Floor:
     def loadmap(self):
         with open(os.path.join('map', 'floor%03d.dat' % self.floornum)) as f:
             m = f.readlines()
+            self.decrypt(m)
         for i in range(MAP_ROWS):
             for j in range(MAP_COLS):
                 loc = (j * CELL_SIZE + CELL_SIZE/2, 
@@ -34,6 +35,10 @@ class Floor:
                     else:
                         self.group.add(npc_class(loc))
     
+    def decrypt(self, map):
+        for i, s in enumerate(map):
+            map[i] = s
+            
     def show_greenkeys(self):
         for gk in self.group_gk:
             self.group.add(gk)

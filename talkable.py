@@ -8,10 +8,7 @@ from character import load_images
 
 
 class Talkable(Npc):
-
-    def __init__(self, location):
-        super(Talkable, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-        self.index = -1
+    msgs = []
 
     def do_collide(self, player):
         for msg in self.msgs:

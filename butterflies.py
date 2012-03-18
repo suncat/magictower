@@ -19,9 +19,6 @@ class Butterfly(Enemy):
     skill = "NO"
     condition = "NORMAL"
 
-    def __init__(self, location):
-        super(Butterfly, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
 
 class MidButterfly(Butterfly):
     images = load_images(["midbutterfly.png", "midbutterfly2.png"])

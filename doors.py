@@ -8,9 +8,6 @@ from character import load_images
 
 class AbstractDoor(Npc):
 
-    def __init__(self, location):
-        super(AbstractDoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         if self.can_open(player):
             self.kill()
@@ -53,9 +50,6 @@ class Specialdoor(AbstractDoor):
 
 class Ftendoor(Npc):
     images = load_images(["specialdoor.png"])
-
-    def __init__(self, location):
-        super(Ftendoor, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         player.undo()

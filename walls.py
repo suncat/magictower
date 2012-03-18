@@ -9,9 +9,6 @@ from character import load_images
 class Wall(Npc):
     images = load_images(["wall.png"])
 
-    def __init__(self, location):
-        super(Wall, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         player.undo()
 

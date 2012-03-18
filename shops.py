@@ -9,9 +9,6 @@ from character import load_images
 
 class Shop(Npc):
 
-    def __init__(self, location):
-        super(Shop, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         player.undo()
         Choicebox(self.msgs, keydict=self.funcdict).show()

@@ -22,9 +22,6 @@ class Snake(Enemy):
     skill = "NO"
     condition = "NORMAL"
 
-    def __init__(self, location):
-        super(Snake, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     @classmethod
     def hp(cls, player):
         return max(cls._hp - player.snakerocknum * 13, 0)

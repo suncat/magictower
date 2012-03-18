@@ -10,9 +10,6 @@ class Smalldrug(Npc):
     images = load_images(["smalldrug.png"])
     heal = 130
 
-    def __init__(self, location):
-        super(Smalldrug, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         player.health += self.heal
         self.kill()

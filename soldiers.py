@@ -17,9 +17,6 @@ class MidSoldier(Enemy):
     skill = "NO"
     condition = "NORMAL"
 
-    def __init__(self, location):
-        super(MidSoldier, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
 
 class Soldier(MidSoldier):
     images = load_images(["soldier.png", "soldier2.png"])

@@ -8,9 +8,6 @@ from character import load_images
 
 class BaseKey(Npc):
 
-    def __init__(self, location, size=(CELL_SIZE,CELL_SIZE)):
-        super(BaseKey, self).__init__(location, size)
-
     def do_collide(self, player):
         player.pick_key(self.key)
         self.kill()

@@ -11,9 +11,6 @@ class Defencerock(Npc):
     images = load_images(["defencerock.png"])
     dp = 8
 
-    def __init__(self, location):
-        super(Defencerock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         player.defence += self.dp
         self.kill()

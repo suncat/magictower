@@ -35,9 +35,6 @@ class Leafy(Enemy):
     skill = "NO"
     condition = "NORMAL"
 
-    def __init__(self, location):
-        super(Leafy, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         if player.feature in ["FIRE", "SKY", "SNOW"]:
             player.weaken(10)
@@ -54,9 +51,6 @@ class Fleavey(Enemy):
     feature = 'Grass'
     skill = "GREEN AIR-SHOT"
     condition = "NORMAL"
-
-    def __init__(self, location):
-        super(Fleavey, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         Msgbox("Skill: Green Air-Shot! Be careful!").show()
@@ -85,9 +79,6 @@ class Fleavey(Enemy):
 class SnakeRock(Npc):
     images = load_images(["snakerock.png"])
 
-    def __init__(self, location):
-        super(SnakeRock, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         player.snakerocknum += 1
         self.kill()
@@ -95,9 +86,6 @@ class SnakeRock(Npc):
 
 class TopFloorGate(Npc):
     images = load_images(["topfloorgate.png"])
-
-    def __init__(self, location):
-        super(TopFloorGate, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.get_top == True:
@@ -112,9 +100,6 @@ class TopFloorGate(Npc):
 class Trap(Npc):
     images = load_images(["trap.png"])
 
-    def __init__(self, location):
-        super(Trap, self).__init__(location, (CELL_SIZE, CELL_SIZE))
-
     def do_collide(self, player):
         self.kill()
         player.suicide()
@@ -122,9 +107,6 @@ class Trap(Npc):
 
 class SKeyKiller(Npc):
     images = load_images(["skeykiller.png"])
-
-    def __init__(self, location):
-        super(SKeyKiller, self).__init__(location, (CELL_SIZE, CELL_SIZE))
 
     def do_collide(self, player):
         if player.speed != [0, 0]:
