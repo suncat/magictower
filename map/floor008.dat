@@ -1,6 +1,6 @@
-0o0h0h0a
-o1111110
-01mmpq1a
-onmmpq10
-3111111h
-40a0a0h0
+,MidSoldier,,MidButterfly,,MidButterfly,,MiddleSnake
+MidSoldier,Wall,Wall,Wall,Wall,Wall,Wall,
+,Wall,Fakewall,Fakewall,Largedprock,Largedrug,Wall,MiddleSnake
+MidSoldier,Specialdoor,Fakewall,Fakewall,Largedprock,Largedrug,Wall,
+UpStair,Wall,Wall,Wall,Wall,Wall,Wall,MidButterfly
+DownStair,,MiddleSnake,,MiddleSnake,,MidButterfly,

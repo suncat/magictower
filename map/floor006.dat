@@ -1,6 +1,6 @@
-111j1iii
-kaaa1i1i
-11d11iii
-bhh91l1d
-11d111dd
-400ab003
+Wall,Wall,Wall,MoneyShop,Wall,Soldier,Soldier,Soldier
+ExpShop,MiddleSnake,MiddleSnake,MiddleSnake,Wall,Soldier,Wall,Soldier
+Wall,Wall,YellowDoor,Wall,Wall,Soldier,Soldier,Soldier
+Middledrug,MidButterfly,MidButterfly,YellowKey,Wall,GreenKey,Wall,YellowDoor
+Wall,Wall,YellowDoor,Wall,Wall,Wall,YellowDoor,YellowDoor
+DownStair,,,MiddleSnake,Middledrug,,,UpStair

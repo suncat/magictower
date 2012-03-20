@@ -1,6 +1,6 @@
-981890d3
-1adc1a11
-181a1g16
-ca1a1f1b
-111a101b
-40e900d8
+YellowKey,Butterfly,Wall,Butterfly,YellowKey,,YellowDoor,UpStair
+Wall,MiddleSnake,YellowDoor,SnakeRock,Wall,MiddleSnake,Wall,Wall
+Wall,Butterfly,Wall,MiddleSnake,Wall,MiddleDProck,Wall,Defencerock
+SnakeRock,MiddleSnake,Wall,MiddleSnake,Wall,Trap,Wall,Middledrug
+Wall,Wall,Wall,MiddleSnake,Wall,,Wall,Middledrug
+DownStair,,Oldman,YellowKey,,,YellowDoor,Butterfly

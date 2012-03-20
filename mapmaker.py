@@ -1,9 +1,74 @@
-from __future__ import division
+#!/usr/bin/env python
+from __future__ import division, with_statement
 import pygame
+import os.path
+import sys
+import csv
 
-from consts import *
+from consts import SCREEN_HEIGHT, CELL_SIZE, MAP_ROWS, MAP_COLS
+from consts import games
 from engine import Scene, Game
-from npcs import NPC_DICT
+from msgbox import Msgbox
+from floor import decrypt
+from npcs import *
+
+NPC_LIST = [
+    Wall,
+    Snake,
+    UpStair,
+    DownStair,
+    Defencerock,
+    Smalldrug,
+    Butterfly,
+    YellowKey,
+    MiddleSnake,
+    Middledrug,
+    SnakeRock,
+    YellowDoor,
+    Oldman,
+    Trap,
+    MiddleDProck,
+    MidButterfly,
+    Soldier,
+    MoneyShop,
+    ExpShop,
+    GreenKey,
+    Fakewall,
+    Specialdoor,
+    MidSoldier,
+    Largedprock,
+    Largedrug,
+    LargeSoldier,
+    LargeSnake,
+    RedDoor,
+    BlueDoor,
+    GreenDoor,
+    TopFloorGate,
+    NormalGkey,
+    Ftendoor,
+    MagicSnake,
+    KingSnake,
+    Switchdoor,
+    BlueKey,
+    Franklin,
+    Leafy,
+    Smallmagic,
+    Fleavey,
+    Firerock,
+    SecondMoney,
+    SecondExp,
+    LargeButterfly,
+    LightButterfly,
+    SwordKey,
+    SKeyKiller,
+    Aquarock,
+    Skyrock,
+    Exlargedrug,
+]
+
+
+def encrypt(string):
+    return string
 
 
 class Panel(object):
@@ -31,10 +96,8 @@ class Toolbox(Panel):
         self.puttools()
         
     def loadtools(self):
-        keys = NPC_DICT.keys()
-        keys.sort()
-        for key in keys:
-            tool = NPC_DICT[key]((0, 0), (Toolbox.WIDTH, Toolbox.HEIGHT))
+        for cls in NPC_LIST:
+            tool = cls((0, 0), (Toolbox.WIDTH, Toolbox.HEIGHT))
             self.tools.add(tool)
     
     def puttools(self):
@@ -62,13 +125,33 @@ class Toolbox(Panel):
         
 class MapGrid(Panel):
     linecolor = (0, 0, 0)
-    def __init__(self, *args, **kwargs):
+    def __init__(self, floornum, *args, **kwargs):
         super(MapGrid, self).__init__(*args, **kwargs)
+        self.floornum = floornum
+        self.mapfile = os.path.join('map', 'floor%03d.dat' % floornum)
         self.group = pygame.sprite.RenderUpdates()
         self.sprites = []
-        for i in range(MAP_ROWS * MAP_COLS):
-            self.sprites.append(None)
+        self.loadmap()
         
+    def loadmap(self):
+        if not os.path.exists(self.mapfile):
+            for i in range(MAP_ROWS):
+                for j in range(MAP_COLS):
+                    self.sprites.append(None)
+        else:
+            with open(self.mapfile) as f:
+                for i, line in enumerate(csv.reader(f)):
+                    real_line = decrypt(line)
+                    for j, cell in enumerate(real_line):
+                        if cell:
+                            loc = (j * CELL_SIZE + CELL_SIZE/2, 
+                                   i * CELL_SIZE + CELL_SIZE/2)
+                            npc = globals().get(cell)(loc)
+                            self.group.add(npc)
+                        else:
+                            npc = None
+                        self.sprites.append(npc)
+
     def draw(self):
         super(MapGrid, self).draw()
         for i in range(MAP_ROWS+1):
@@ -97,23 +180,56 @@ class MapGrid(Panel):
                 self.group.remove(self.sprites[n])
             self.sprites[n] = None
         
+    def save_to_file(self):
+        with open(self.mapfile, 'w') as f:
+            l = []
+            for i, sprite in enumerate(self.sprites):
+                if sprite is not None:
+                    l.append(sprite.__class__.__name__)
+                else:
+                    l.append('')
+                if (i+1) % MAP_COLS == 0:
+                    s = encrypt(','.join(l))
+                    print >>f, s
+                    l = []
+        Msgbox("Save to %s ok" %  os.path.basename(self.mapfile)).show()
             
 class MapEditScene(Scene):
-    def __init__(self, screen):
+    def __init__(self, screen, floornum):
         super(MapEditScene, self).__init__(screen)
         self.toolbox = Toolbox(screen, 0, 0, 12, 5, (100,200,200))
-        self.mapgrid = MapGrid(screen, (self.toolbox.get_width(), 0, screen.get_width()-self.toolbox.get_width(), screen.get_height()), (200, 100, 100))
+        self.mapgrid = MapGrid(
+                floornum,
+                screen,
+                (
+                    self.toolbox.get_width(),
+                    0,
+                    screen.get_width()-self.toolbox.get_width(),
+                    screen.get_height()
+                ),
+                (200, 100, 100))
     
     def draw(self):
         self.toolbox.draw()
         self.mapgrid.draw()
 
     def response_event(self, event):
-        if event.type == pygame.MOUSEBUTTONUP:
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_F12:
+                self.mapgrid.save_to_file()
+        elif event.type == pygame.MOUSEBUTTONUP:
             if event.pos[0] <= self.toolbox.get_width():
-                self.toolbox.on_click(event.pos[0], event.pos[1], event.button)
+                self.toolbox.on_click(
+                        event.pos[0],
+                        event.pos[1],
+                        event.button
+                        )
             else:
-                self.mapgrid.on_click(event.pos[0]-self.toolbox.get_width(), event.pos[1], event.button)
+                self.mapgrid.on_click(
+                        event.pos[0]-self.toolbox.get_width(),
+                        event.pos[1],
+                        event.button
+                        )
                 
 
 class MapMaker(Game):
@@ -125,9 +241,12 @@ class MapMaker(Game):
             scene.draw()
 
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print "Usage: python mapmaker.py <floornum>"
+        sys.exit(1)
+    floornum =  int(sys.argv[1])
     game = MapMaker(1000, SCREEN_HEIGHT, fps=15)
-    scene1 = MapEditScene(game.screen)
+    scene1 = MapEditScene(game.screen, floornum)
     game.add_scene(scene1)
-    game.current_scene = scene1
     games['DEFAULTGAME'] = game
     game.run()

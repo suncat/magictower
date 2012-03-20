@@ -1,9 +1,8 @@
 #! /usr/bin/env python
 #coding=utf-8
 import character
-import pygame
 
-from consts import *
+from consts import CELL_SIZE
 
 
 class Npc(character.Character):

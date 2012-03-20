@@ -3,11 +3,14 @@
 from __future__ import with_statement
 import pygame
 import os.path
+import csv
 
 from consts import *
-from npcs import NPC_DICT
 from npcs import *
 
+def decrypt(string):
+    return string
+            
 
 class Floor(object):
 
@@ -21,24 +24,18 @@ class Floor(object):
 
     def loadmap(self):
         with open(os.path.join('map', 'floor%03d.dat' % self.floornum)) as f:
-            m = f.readlines()
-            self.decrypt(m)
-        for i in range(MAP_ROWS):
-            for j in range(MAP_COLS):
-                loc = (j * CELL_SIZE + CELL_SIZE/2, 
-                       i * CELL_SIZE + CELL_SIZE/2)
-                k = m[i][j]
-                npc_class = NPC_DICT.get(k)
-                if npc_class:
-                    if npc_class == GreenKey:
-                        self.group_gk.add(npc_class(loc))
-                    else:
-                        self.group.add(npc_class(loc))
+            for i, line in enumerate(csv.reader(f)):
+                real_line = decrypt(line)
+                for j, cell in enumerate(real_line):
+                    if cell:
+                        loc = (j * CELL_SIZE + CELL_SIZE/2, 
+                               i * CELL_SIZE + CELL_SIZE/2)
+                        npc = globals().get(cell)(loc)
+                        if cell == 'GreenKey':
+                            self.group_gk.add(npc)
+                        else:
+                            self.group.add(npc)
     
-    def decrypt(self, map):
-        for i, s in enumerate(map):
-            map[i] = s
-            
     def show_greenkeys(self):
         for gk in self.group_gk:
             self.group.add(gk)

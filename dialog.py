@@ -1,7 +1,4 @@
 import pygame
-import sys
-import os.path
-import random
 
 from consts import get_game
 

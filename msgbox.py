@@ -1,7 +1,5 @@
-import pygame
-import sys
 
-from choicebox import Choicebox#, draw_dialog
+from choicebox import Choicebox
 
 class Msgbox(Choicebox):
     rect_color = (0, 255, 255)
