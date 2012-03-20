@@ -37,7 +37,7 @@ class Player(Character):
         self.money = 1000
         self.exp = 1000
         self.level = 1
-        STARTFLOOR = 14
+        STARTFLOOR = 998
         self.currentfloor = Floor(STARTFLOOR)
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 

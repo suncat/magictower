@@ -22,23 +22,21 @@ class Floor(object):
 
     def loadmap(self):
         with open(os.path.join('map', 'floor%03d.dat' % self.floornum)) as f:
-            m = f.readlines()
-            self.decrypt(m)
-        for i in range(MAP_ROWS):
-            for j in range(MAP_COLS):
-                loc = (j * CELL_SIZE + CELL_SIZE/2, 
-                       i * CELL_SIZE + CELL_SIZE/2)
-                k = m[i][j]
-                npc_class = NPC_DICT.get(k)
-                if npc_class:
-                    if npc_class == GreenKey:
-                        self.group_gk.add(npc_class(loc))
-                    else:
-                        self.group.add(npc_class(loc))
+            for i, line in enumerate(csv.reader(f)):
+                real_line = self.decrypt(line)
+                print real_line
+                for j, cell in enumerate(real_line):
+                    if cell:
+                        loc = (j * CELL_SIZE + CELL_SIZE/2, 
+                               i * CELL_SIZE + CELL_SIZE/2)
+                        npc = globals().get(cell)(loc)
+                        if cell == 'GreenKey':
+                            self.group_gk.add(npc)
+                        else:
+                            self.group.add(npc)
     
-    def decrypt(self, map_):
-        for i, s in enumerate(map_):
-            map_[i] = s
+    def decrypt(self, string):
+        return string
             
     def show_greenkeys(self):
         for gk in self.group_gk:
