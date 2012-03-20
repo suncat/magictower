@@ -24,7 +24,6 @@ class Floor(object):
         with open(os.path.join('map', 'floor%03d.dat' % self.floornum)) as f:
             for i, line in enumerate(csv.reader(f)):
                 real_line = self.decrypt(line)
-                print real_line
                 for j, cell in enumerate(real_line):
                     if cell:
                         loc = (j * CELL_SIZE + CELL_SIZE/2, 
