@@ -3,6 +3,7 @@
 import pygame
 import sys
 import os.path
+import time
 
 from consts import *
 from msgbox import Msgbox
@@ -21,6 +22,7 @@ class Player(Character):
         self.root = game.root
         self.gameboard = gameboard
         self.speed = speed
+        self.condition = "NORMAL"
         self.on_power = False
         self.get_top = False
         self.health = 500000
@@ -37,7 +39,7 @@ class Player(Character):
         self.money = 1000
         self.exp = 1000
         self.level = 1
-        STARTFLOOR = 14
+        STARTFLOOR = 15
         self.currentfloor = Floor(STARTFLOOR)
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
@@ -71,6 +73,15 @@ class Player(Character):
             npc.do_collide(self)
 
         self.speed = [0, 0]
+
+        if self.condition == "POISON":
+            if time.time() > self.condition_endtime:
+                self.condition = "NORMAL"
+            else:
+                if time.time() > self.condition_time + 1:
+                    self.health -= 10
+                    self.condition_time = time.time()
+
         if self.is_dead():
             self.suicide()
 
@@ -140,6 +151,11 @@ class Player(Character):
                 else:
                     self.rect.left = npc.rect.left - CELL_SIZE
                     self.rect.top = npc.rect.top
+
+    def poison(self):
+        self.condition = "POISON"
+        self.condition_time = time.time()
+        self.condition_endtime = time.time() + 30
 
     def buy_y(self):
         if self.money >= 20:

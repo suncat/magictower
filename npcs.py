@@ -2,10 +2,11 @@
 #coding=utf-8
 from __future__ import absolute_import
 import random
+import time
 
 from consts import *
 from character import load_images
-from npc import Npc
+from npc import Npc, GrassMixin
 from msgbox import Msgbox
 
 from snakes import *
@@ -72,6 +73,19 @@ class Fleavey(Enemy):
         else:
             player.weaken(80)
         super(Fleavey, self).do_collide(player)
+
+
+class Flowey(Enemy, GrassMixin):
+    hp = 570
+    money = 14
+    exp = 13
+    images = load_images(["flowey.png", "flowey2.png"])
+    skill = "FLOWERBED-MACHINEGUN"
+    condition = "POISON"
+
+    def do_collide(self, player):
+        player.poison()
+        super(Flowey, self).do_collide(player)
 
 
 class SnakeRock(Npc):

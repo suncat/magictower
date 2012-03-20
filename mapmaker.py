@@ -64,6 +64,7 @@ NPC_LIST = [
     Aquarock,
     Skyrock,
     Exlargedrug,
+    Flowey,
 ]
 
 
@@ -215,7 +216,7 @@ class MapEditScene(Scene):
 
     def response_event(self, event):
         if event.type == pygame.KEYUP:
-            if event.key == pygame.K_F12:
+            if event.key == pygame.K_s:
                 self.mapgrid.save_to_file()
         elif event.type == pygame.MOUSEBUTTONUP:
             if event.pos[0] <= self.toolbox.get_width():
