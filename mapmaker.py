@@ -128,26 +128,29 @@ class MapGrid(Panel):
     def __init__(self, floornum, *args, **kwargs):
         super(MapGrid, self).__init__(*args, **kwargs)
         self.floornum = floornum
-        self.mapfile = 'floor%03d.dat' % floornum
+        self.mapfile = os.path.join('map', 'floor%03d.dat' % floornum)
         self.group = pygame.sprite.RenderUpdates()
         self.sprites = []
         self.loadmap()
-        for i in range(MAP_ROWS * MAP_COLS):
-            self.sprites.append(None)
         
     def loadmap(self):
-        with open(os.path.join('map', self.mapfile)) as f:
-            for i, line in enumerate(csv.reader(f)):
-                real_line = decrypt(line)
-                for j, cell in enumerate(real_line):
-                    if cell:
-                        loc = (j * CELL_SIZE + CELL_SIZE/2, 
-                               i * CELL_SIZE + CELL_SIZE/2)
-                        npc = globals().get(cell)(loc)
-                        self.group.add(npc)
-                    else:
-                        npc = None
-                    self.sprites.append(npc)
+        if not os.path.exists(self.mapfile):
+            for i in range(MAP_ROWS):
+                for j in range(MAP_COLS):
+                    self.sprites.append(None)
+        else:
+            with open(self.mapfile) as f:
+                for i, line in enumerate(csv.reader(f)):
+                    real_line = decrypt(line)
+                    for j, cell in enumerate(real_line):
+                        if cell:
+                            loc = (j * CELL_SIZE + CELL_SIZE/2, 
+                                   i * CELL_SIZE + CELL_SIZE/2)
+                            npc = globals().get(cell)(loc)
+                            self.group.add(npc)
+                        else:
+                            npc = None
+                        self.sprites.append(npc)
 
     def draw(self):
         super(MapGrid, self).draw()
@@ -178,7 +181,7 @@ class MapGrid(Panel):
             self.sprites[n] = None
         
     def save_to_file(self):
-        with open(os.path.join('map', self.mapfile), 'w') as f:
+        with open(self.mapfile, 'w') as f:
             l = []
             for i, sprite in enumerate(self.sprites):
                 if sprite is not None:
@@ -189,7 +192,7 @@ class MapGrid(Panel):
                     s = encrypt(','.join(l))
                     print >>f, s
                     l = []
-        Msgbox("Save to %s ok" %  self.mapfile).show()
+        Msgbox("Save to %s ok" %  os.path.basename(self.mapfile)).show()
             
 class MapEditScene(Scene):
     def __init__(self, screen, floornum):
