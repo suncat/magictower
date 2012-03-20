@@ -3,6 +3,7 @@
 from __future__ import with_statement
 import pygame
 import os.path
+import csv
 
 from consts import *
 from npcs import NPC_DICT
@@ -35,9 +36,9 @@ class Floor(object):
                     else:
                         self.group.add(npc_class(loc))
     
-    def decrypt(self, map):
-        for i, s in enumerate(map):
-            map[i] = s
+    def decrypt(self, map_):
+        for i, s in enumerate(map_):
+            map_[i] = s
             
     def show_greenkeys(self):
         for gk in self.group_gk:

@@ -71,6 +71,8 @@ class Game(object):
 
     def add_scene(self, scene):
         self.scenes.append(scene)
+        if len(self.scenes) == 1:
+            self.current_scene = scene
         
         
 if __name__ == '__main__':

@@ -1,9 +1,12 @@
-from __future__ import division
+from __future__ import division, with_statement
 import pygame
+import os.path
+import sys
 
 from consts import *
 from engine import Scene, Game
 from npcs import NPC_DICT
+from msgbox import Msgbox
 
 
 class Panel(object):
@@ -97,23 +100,54 @@ class MapGrid(Panel):
                 self.group.remove(self.sprites[n])
             self.sprites[n] = None
         
+    def save_to_file(self, floornum):
+        fn = 'floor%03d.dat' % floornum
+        with open(os.path.join('map', fn), 'w') as f:
+            for i, sprite in enumerate(self.sprites):
+                if sprite is not None:
+                    f.write(sprite.__class__.__name__)
+                if (i+1) % MAP_COLS == 0:
+                    f.write('\n')
+                else:
+                    f.write(',')
+        Msgbox("Save to %s ok" %  fn).show()
             
 class MapEditScene(Scene):
-    def __init__(self, screen):
+    def __init__(self, screen, floornum):
         super(MapEditScene, self).__init__(screen)
+        self.floornum = floornum
         self.toolbox = Toolbox(screen, 0, 0, 12, 5, (100,200,200))
-        self.mapgrid = MapGrid(screen, (self.toolbox.get_width(), 0, screen.get_width()-self.toolbox.get_width(), screen.get_height()), (200, 100, 100))
+        self.mapgrid = MapGrid(
+                screen,
+                (
+                    self.toolbox.get_width(),
+                    0,
+                    screen.get_width()-self.toolbox.get_width(),
+                    screen.get_height()
+                ),
+                (200, 100, 100))
     
     def draw(self):
         self.toolbox.draw()
         self.mapgrid.draw()
 
     def response_event(self, event):
-        if event.type == pygame.MOUSEBUTTONUP:
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_F12:
+                self.mapgrid.save_to_file(floornum=self.floornum)
+        elif event.type == pygame.MOUSEBUTTONUP:
             if event.pos[0] <= self.toolbox.get_width():
-                self.toolbox.on_click(event.pos[0], event.pos[1], event.button)
+                self.toolbox.on_click(
+                        event.pos[0],
+                        event.pos[1],
+                        event.button
+                        )
             else:
-                self.mapgrid.on_click(event.pos[0]-self.toolbox.get_width(), event.pos[1], event.button)
+                self.mapgrid.on_click(
+                        event.pos[0]-self.toolbox.get_width(),
+                        event.pos[1],
+                        event.button
+                        )
                 
 
 class MapMaker(Game):
@@ -125,9 +159,12 @@ class MapMaker(Game):
             scene.draw()
 
 if __name__ == '__main__':
+    if len(sys.argv) != 2:
+        print "Usage: python mapmaker.py <floornum>"
+        sys.exit(1)
+    floornum =  int(sys.argv[1])
     game = MapMaker(1000, SCREEN_HEIGHT, fps=15)
-    scene1 = MapEditScene(game.screen)
+    scene1 = MapEditScene(game.screen, floornum)
     game.add_scene(scene1)
-    game.current_scene = scene1
     games['DEFAULTGAME'] = game
     game.run()
