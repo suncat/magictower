@@ -1,5 +1,4 @@
 import pygame
-import sys
 import os.path
 import random
 

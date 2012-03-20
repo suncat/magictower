@@ -1,6 +1,6 @@
-7db81a03
-c18a101a
-111d1800
-17c8861d
-11111119
-409a7008
+Smalldrug,YellowDoor,Middledrug,Butterfly,Wall,MiddleSnake,,UpStair
+SnakeRock,Wall,Butterfly,MiddleSnake,Wall,,Wall,MiddleSnake
+Wall,Wall,Wall,YellowDoor,Wall,Butterfly,,
+Wall,Smalldrug,SnakeRock,Butterfly,Butterfly,Defencerock,Wall,YellowDoor
+Wall,Wall,Wall,Wall,Wall,Wall,Wall,YellowKey
+DownStair,,YellowKey,MiddleSnake,Smalldrug,,,Butterfly

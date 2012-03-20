@@ -1,6 +1,6 @@
-1w1x1c13
-1d1srs1a
-1v11d11v
-1u19rbaa
-1t1111d1
-40oasaoq
+Wall,TopFloorGate,Wall,NormalGkey,Wall,SnakeRock,Wall,UpStair
+Wall,YellowDoor,Wall,LargeSnake,LargeSoldier,LargeSnake,Wall,MiddleSnake
+Wall,GreenDoor,Wall,Wall,YellowDoor,Wall,Wall,GreenDoor
+Wall,BlueDoor,Wall,YellowKey,LargeSoldier,Middledrug,MiddleSnake,MiddleSnake
+Wall,RedDoor,Wall,Wall,Wall,Wall,YellowDoor,Wall
+DownStair,,MidSoldier,MiddleSnake,LargeSnake,MiddleSnake,MidSoldier,Largedrug

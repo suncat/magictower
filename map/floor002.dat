@@ -1,6 +1,6 @@
-61711003
-61217010
-21011210
-22002010
-11112110
-40000000
+Defencerock,Wall,Smalldrug,Wall,Wall,,,UpStair
+Defencerock,Wall,Snake,Wall,Smalldrug,,Wall,
+Snake,Wall,,Wall,Wall,Snake,Wall,
+Snake,Snake,,,Snake,,Wall,
+Wall,Wall,Wall,Wall,Snake,Wall,Wall,
+DownStair,,,,,,,

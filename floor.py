@@ -6,9 +6,11 @@ import os.path
 import csv
 
 from consts import *
-from npcs import NPC_DICT
 from npcs import *
 
+def decrypt(string):
+    return string
+            
 
 class Floor(object):
 
@@ -23,7 +25,7 @@ class Floor(object):
     def loadmap(self):
         with open(os.path.join('map', 'floor%03d.dat' % self.floornum)) as f:
             for i, line in enumerate(csv.reader(f)):
-                real_line = self.decrypt(line)
+                real_line = decrypt(line)
                 for j, cell in enumerate(real_line):
                     if cell:
                         loc = (j * CELL_SIZE + CELL_SIZE/2, 
@@ -34,9 +36,6 @@ class Floor(object):
                         else:
                             self.group.add(npc)
     
-    def decrypt(self, string):
-        return string
-            
     def show_greenkeys(self):
         for gk in self.group_gk:
             self.group.add(gk)
