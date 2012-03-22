@@ -68,7 +68,7 @@ class MagicTowerGame(Game):
         textboard = self.textboard
         # 填充背景
         gameboard.fill([255, 255, 255])
-        textboard.fill([120, 120, 120])
+        textboard.fill([150, 150, 150])
         # 画人和前楼层地图
         self.root.draw(gameboard)
         # 显示体力
@@ -119,15 +119,19 @@ class MagicTowerGame(Game):
         lv_text = font.render("level: " + str(self.player.level), 1, (150, 0, 0))
         lvpos = [10, 310]
         textboard.blit(lv_text, lvpos)
+        # 显示状态
+        cond_text = font.render("cond: " + str(self.player.condition), 1, (150, 100, 0))
+        condpos = [10, 340]
+        textboard.blit(cond_text, condpos)
         # 显示魔力值
         if self.player.currentfloor.floornum >= 11:
             mg_text = font.render("magic: " + str(self.player.magic), 1, (150, 0, 200))
-            mgpos = [10, 340]
+            mgpos = [10, 370]
             textboard.blit(mg_text, mgpos)
         # 显示属性
         if self.player.currentfloor.floornum >= 11:
             ft_text = font.render("feature: " + str(self.player.feature), 1, (150, 200, 0))
-            ftpos = [10, 370]
+            ftpos = [10, 400]
             textboard.blit(ft_text, ftpos)
         
 if __name__ == '__main__':

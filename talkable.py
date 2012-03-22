@@ -19,6 +19,24 @@ class Oldman(Talkable):
     images = load_images(["oldman.png"])
     msgs = ["Do not think about everything is so easy. Mind traps.",]
 
+    def do_collide(self, player):
+        if player.currentfloor.floornum == 5:
+            super(Oldman, self).do_collide(player)
+        elif player.currentfloor.floornum == 17:
+            self.msgs = [
+                "Oldman: The fairy on the 23rd floor is waiting for you.",
+                "Worior: What? Waiting for me?",
+                "Oldman: Right. She is looking for something.",
+                "Oldman: And she need you to bring it.",
+                "Worior: And could you tell me the thing?",
+                "Oldman: Sorry, I don't know. You can go and ask her yourself.",
+                "Worior: Can you help me to beat the monsters above us?",
+                "Oldman: No, it is your stuff. Do it yourself.",
+                "Oldman: But it's really difficult. Really. So good luck, boy.",
+                "Worior: OK. Thanks...",
+                ]
+            super(Oldman, self).do_collide(player)
+
 
 class Franklin(Talkable):
     images = load_images(["franklin.png"])

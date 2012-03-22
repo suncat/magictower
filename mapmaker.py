@@ -65,6 +65,8 @@ NPC_LIST = [
     Skyrock,
     Exlargedrug,
     Flowey,
+    MKeyKiller,
+    Spider,
 ]
 
 

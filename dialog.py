@@ -1,4 +1,5 @@
 import pygame
+import sys
 
 from consts import get_game
 
@@ -30,7 +31,9 @@ class Dialog(object):
         while not self.closed:
             clock.tick(get_game().fps)
             for event in pygame.event.get():
-                if event.type == pygame.KEYDOWN and event.key == self.closekey:
+                if event.type == pygame.QUIT:
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN and event.key == self.closekey:
                     self.closed = True
                 self.response_event(event)
             get_game().bgmusic()

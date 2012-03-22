@@ -39,7 +39,7 @@ class Player(Character):
         self.money = 1000
         self.exp = 1000
         self.level = 1
-        STARTFLOOR = 15
+        STARTFLOOR = 18
         self.currentfloor = Floor(STARTFLOOR)
         self.visited_floors = {STARTFLOOR: self.currentfloor}
 
@@ -154,6 +154,7 @@ class Player(Character):
 
     def poison(self):
         self.condition = "POISON"
+        Msgbox("Ouch! You've got POISON condition to hurt health!").show()
         self.condition_time = time.time()
         self.condition_endtime = time.time() + 30
 

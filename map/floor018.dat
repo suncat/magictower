@@ -1,0 +1,6 @@
+Smallmagic,Wall,Leafy,SKeyKiller,GreenDoor,,LargeSoldier,UpStair
+Leafy,LargeSoldier,Spider,MKeyKiller,Wall,BlueDoor,Wall,Wall
+Wall,Wall,Wall,Wall,Wall,,Flowey,MKeyKiller
+Wall,,LargeButterfly,MagicSnake,BlueKey,,Wall,BlueDoor
+Wall,BlueKey,Wall,Wall,Wall,Wall,Wall,LightButterfly
+DownStair,,Wall,NormalGkey,Largedrug,Flowey,Flowey,Firerock

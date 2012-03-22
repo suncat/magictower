@@ -22,6 +22,8 @@ from shops import *
 from stairs import *
 from talkable import *
 from walls import *
+from keykiller import *
+from spider import *
 from enemy import Enemy
 
 
@@ -57,6 +59,7 @@ class Fleavey(Enemy):
         if miss == 1:
             Msgbox("The skill missed!").show()
         else:
+            Msgbox("The skill hit!").show()
             player.defence -= 50
             if player.feature in ["FIRE", "SKY", "SNOW"]:
                 player.weaken(50)
@@ -85,6 +88,41 @@ class Flowey(Enemy, GrassMixin):
 
     def do_collide(self, player):
         player.poison()
+        Msgbox("Skill: Flowerbed-machinegun! Too much shooting...").show()
+        misscount = 1
+        hitcount = 1
+        for i in range(1, 6):
+            miss = random.randint(1, 10)
+            if miss == 1:
+                if misscount == 1:
+                    Msgbox("The skill missed!").show()
+                else:
+                    Msgbox("The skill missed again!").show()
+                misscount += 1
+            else:
+                if hitcount == 1:
+                    Msgbox("The skill hit!").show()
+                else:
+                    Msgbox("The skill hit again!").show()
+                hitcount += 1
+                player.defence -= 40
+                if player.feature in ["FIRE", "SKY", "SNOW"]:
+                    player.weaken(20)
+                    player.hurt(25)
+                elif player.feature in ["WATER", "ELECTRIC"]:
+                    player.weaken(80)
+                    player.hurt(100)
+                else:
+                    player.weaken(40)
+                    player.hurt(50)
+                if player.defence < 0:
+                    player.defence = 0
+        if player.feature in ["FIRE", "SKY", "SNOW"]:
+            player.weaken(60)
+        elif player.feature in ["WATER", "ELECTRIC"]:
+            player.weaken(240)
+        else:
+            player.weaken(120)
         super(Flowey, self).do_collide(player)
 
 
@@ -115,14 +153,3 @@ class Trap(Npc):
     def do_collide(self, player):
         self.kill()
         player.suicide()
-
-
-class SKeyKiller(Npc):
-    images = load_images(["skeykiller.png"])
-
-    def do_collide(self, player):
-        if player.speed != [0, 0]:
-            player.ykeynum = player.ykeynum - 1 if player.ykeynum > 0 else 0
-            player.bkeynum = player.bkeynum - 1 if player.bkeynum > 0 else 0
-            player.rkeynum = player.rkeynum - 1 if player.rkeynum > 0 else 0
-            player.gkeynum = player.gkeynum - 1 if player.gkeynum > 0 else 0

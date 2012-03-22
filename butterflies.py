@@ -55,6 +55,7 @@ class LightButterfly(Butterfly):
         if miss == 1:
             Msgbox("The skill missed!").show()
         else:
+            Msgbox("The skill hit!").show()
             if player.feature in ["GRASS", "SOIL"]:
                 player.weaken(120)
             elif player.feature in ["WATER", "SKY", "DARK"]:
