@@ -126,6 +126,49 @@ class Flowey(Enemy, GrassMixin):
         super(Flowey, self).do_collide(player)
 
 
+class Bloompire(Enemy, GrassMixin):
+    hp = 600
+    money = 15
+    exp = 15
+    images = load_images(["bloompire.png", "bloompire2.png"])
+    skill = "HONEY-BLOOM-IMAGINATION"
+    condition = "DIZZY"
+
+    def do_collide(self, player):
+        player.dizzy()
+        Msgbox("Skill: Honey-bloom-imagination! I feel so dizzy!").show()
+        miss = random.randint(1, 5)
+        if miss == 1:
+            Msgbox("The skill missed, but maybe come again!").show()
+            again = random.randint(1, 5)
+            if again == 1:
+                self.do_collide(player)
+            else:
+                Msgbox("Hush, the skill didn't come again.").show()
+        else:
+            Msgbox("The skill hit!").show()
+            player.defence -= 250
+            if player.feature in ["FIRE", "SKY", "SNOW"]:
+                player.weaken(100)
+                player.hurt(120)
+            elif player.feature in ["WATER", "ELECTRIC"]:
+                player.weaken(400)
+                player.hurt(480)
+            else:
+                player.weaken(200)
+                player.hurt(240)
+            if player.defence < 0:
+                player.defence = 0
+        if player.feature in ["FIRE", "SKY", "SNOW"]:
+            player.weaken(320)
+        elif player.feature in ["WATER", "ELECTRIC"]:
+            player.weaken(1280)
+        else:
+            player.weaken(640)
+        super(Bloompire, self).do_collide(player)
+        Msgbox("Huh, don't be happy so early.").show()
+
+
 class SnakeRock(Npc):
     images = load_images(["snakerock.png"])
 
@@ -153,3 +196,10 @@ class Trap(Npc):
     def do_collide(self, player):
         self.kill()
         player.suicide()
+
+
+class FlyFloor(Npc):
+    images = load_images(["flyfloor.png"])
+
+    def do_collide(self, player):
+        player.flyable = True

@@ -4,6 +4,7 @@ import pygame
 import sys
 import os.path
 import time
+import random
 
 from consts import *
 from msgbox import Msgbox
@@ -22,26 +23,28 @@ class Player(Character):
         self.root = game.root
         self.gameboard = gameboard
         self.speed = speed
+        self.flyable = False
         self.condition = "NORMAL"
         self.on_power = False
         self.get_top = False
-        self.health = 500000
-        self.magic = 200000
+        self.health = 500
+        self.magic = 200
         self.feature = "NONE"
-        self.defence = 100000
-        self.ykeynum = 100
-        self.bkeynum = 100
-        self.rkeynum = 100
-        self.gkeynum = 100
+        self.defence = 0
+        self.ykeynum = 0
+        self.bkeynum = 0
+        self.rkeynum = 0
+        self.gkeynum = 0
         self.swordkeynum = 0
         self.snakedp = 0
         self.snakerocknum = 0
-        self.money = 1000
-        self.exp = 1000
+        self.money = 0
+        self.exp = 0
         self.level = 1
-        STARTFLOOR = 18
+        STARTFLOOR = 1
         self.currentfloor = Floor(STARTFLOOR)
         self.visited_floors = {STARTFLOOR: self.currentfloor}
+        self.quests = []
 
     def is_out(self):
         if self.rect.left < self.gameboard.get_rect().left:
@@ -70,9 +73,10 @@ class Player(Character):
             self.rect = self.oldpos
 
         for npc in pygame.sprite.spritecollide(self, self.currentfloor.group, dokill=False):
+            for quest in self.quests:
+                if npc in quest.targets:
+                    quest.execute(player, npc)
             npc.do_collide(self)
-
-        self.speed = [0, 0]
 
         if self.condition == "POISON":
             if time.time() > self.condition_endtime:
@@ -81,6 +85,19 @@ class Player(Character):
                 if time.time() > self.condition_time + 1:
                     self.health -= 10
                     self.condition_time = time.time()
+        elif self.condition == "DIZZY":
+            if time.time() > self.condition_endtime:
+                self.condition = "NORMAL"
+            else:
+                if self.speed != [0, 0]:
+                    hurt = random.randint(1, 2)
+                    if hurt == 1:
+                        self.health -= 100 if self.health > 0 else 0
+                        self.magic -= 80 if self.magic > 0 else 0
+                        self.feature = random.choice(["FIRE", "GRASS", "WATER", "SOIL", "SKY", "LIGHT", "SNOW"])
+                        self.defence -= 60
+
+        self.speed = [0, 0]
 
         if self.is_dead():
             self.suicide()
@@ -155,6 +172,12 @@ class Player(Character):
     def poison(self):
         self.condition = "POISON"
         Msgbox("Ouch! You've got POISON condition to hurt health!").show()
+        self.condition_time = time.time()
+        self.condition_endtime = time.time() + 30
+
+    def dizzy(self):
+        self.condition = "DIZZY"
+        Msgbox("Oops! You've got DIZZY condition to have a scaring time!").show()
         self.condition_time = time.time()
         self.condition_endtime = time.time() + 30
 
@@ -253,3 +276,31 @@ class Player(Character):
             setattr(self, attr, keynum - 1)
             return True
         return False
+
+
+class CheatPlayer(Player):
+
+    def __init__(self, game, speed, location, gameboard):
+        super(CheatPlayer, self).__init__(game, speed, location, gameboard)
+        self.condition = "NORMAL"
+        self.flyable = True
+        self.on_power = False
+        self.get_top = False
+        self.health = 500000
+        self.magic = 200000
+        self.feature = "NONE"
+        self.defence = 100000
+        self.ykeynum = 100
+        self.bkeynum = 100
+        self.rkeynum = 100
+        self.gkeynum = 100
+        self.swordkeynum = 100
+        self.snakedp = 0
+        self.snakerocknum = 0
+        self.money = 1000
+        self.exp = 1000
+        self.level = 1
+        STARTFLOOR = 20
+        self.currentfloor = Floor(STARTFLOOR)
+        self.visited_floors = {STARTFLOOR: self.currentfloor}
+        self.quests = []

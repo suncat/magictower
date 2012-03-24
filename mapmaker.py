@@ -67,6 +67,8 @@ NPC_LIST = [
     Flowey,
     MKeyKiller,
     Spider,
+    Bloompire,
+    Midmagic,
 ]
 
 
@@ -200,7 +202,7 @@ class MapGrid(Panel):
 class MapEditScene(Scene):
     def __init__(self, screen, floornum):
         super(MapEditScene, self).__init__(screen)
-        self.toolbox = Toolbox(screen, 0, 0, 12, 5, (100,200,200))
+        self.toolbox = Toolbox(screen, 0, 0, 12, 6, (100,200,200))
         self.mapgrid = MapGrid(
                 floornum,
                 screen,

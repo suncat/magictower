@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"miss",
+				"misscount"
+			],
+			[
+				"cond",
+				"condition"
+			],
+			[
+				"Gra",
+				"GrassMixin"
+			],
+			[
+				"con",
+				"condition_endtime"
+			],
+			[
+				"condi",
+				"condition_time"
+			],
+			[
 				"do",
 				"do_collide"
 			],
@@ -55,118 +75,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "magictower.py",
-			"settings":
-			{
-				"buffer_size": 5343,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "npcs.py",
-			"settings":
-			{
-				"buffer_size": 4095,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "consts.py",
-			"settings":
-			{
-				"buffer_size": 297,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "choicebox.py",
-			"settings":
-			{
-				"buffer_size": 1209,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "msgbox.py",
-			"settings":
-			{
-				"buffer_size": 426,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "player.py",
-			"settings":
-			{
-				"buffer_size": 6931,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "character.py",
-			"settings":
-			{
-				"buffer_size": 1414,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "butterflies.py",
-			"settings":
-			{
-				"buffer_size": 1580,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "keys.py",
-			"settings":
-			{
-				"buffer_size": 753,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "features.py",
-			"settings":
-			{
-				"buffer_size": 486,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "snakes.py",
-			"settings":
-			{
-				"buffer_size": 2123,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "enemy.py",
-			"settings":
-			{
-				"buffer_size": 385,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "soldiers.py",
-			"settings":
-			{
-				"buffer_size": 974,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "monsterguide.py",
-			"settings":
-			{
-				"buffer_size": 1831,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "run magictower",
 	"command_palette":
@@ -192,30 +100,35 @@
 	},
 	"file_history":
 	[
-		"/Users/hxj/Library/Application Support/Sublime Text 2/Packages/Default/Global.sublime-settings",
-		"/Users/hxj/Documents/MyPrograms/magictower/msgbox.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/dprocks.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/magictower.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/player.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/npcs.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/character.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/monsterguide.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/butterflies.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/doors.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/drugs.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/features.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/magics.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/shops.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/soldiers.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/stairs.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/talkable.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/walls.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/keykiller.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/consts.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/choicebox.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/msgbox.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/player.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/character.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/butterflies.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/features.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/snakes.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/enemy.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/soldiers.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/monsterguide.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/mapmaker.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/spider.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/keys.py",
-		"/Users/hxj/Documents/MyPrograms/magictower/floor.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/dialog.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/npc.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/talkable.py",
+		"/Users/hxj/Library/Application Support/Sublime Text 2/Packages/Default/Global.sublime-settings",
+		"/Users/hxj/Documents/MyPrograms/magictower/dprocks.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/doors.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/drugs.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/magics.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/shops.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/stairs.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/walls.py",
+		"/Users/hxj/Documents/MyPrograms/magictower/floor.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/basesnake.py",
 		"/Library/Python/2.7/site-packages/pygame/sprite.py",
 		"/Users/hxj/Documents/MyPrograms/magictower/setup.py",
@@ -270,396 +183,6 @@
 		{
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "magictower.py",
-					"settings":
-					{
-						"buffer_size": 5343,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1640.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "npcs.py",
-					"settings":
-					{
-						"buffer_size": 4095,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 374.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "consts.py",
-					"settings":
-					{
-						"buffer_size": 297,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "choicebox.py",
-					"settings":
-					{
-						"buffer_size": 1209,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 367.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "msgbox.py",
-					"settings":
-					{
-						"buffer_size": 426,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "player.py",
-					"settings":
-					{
-						"buffer_size": 6931,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "character.py",
-					"settings":
-					{
-						"buffer_size": 1414,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 235.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "butterflies.py",
-					"settings":
-					{
-						"buffer_size": 1580,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 2.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "keys.py",
-					"settings":
-					{
-						"buffer_size": 753,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "features.py",
-					"settings":
-					{
-						"buffer_size": 486,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "snakes.py",
-					"settings":
-					{
-						"buffer_size": 2123,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "enemy.py",
-					"settings":
-					{
-						"buffer_size": 385,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								203,
-								203
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "soldiers.py",
-					"settings":
-					{
-						"buffer_size": 974,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 213.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "monsterguide.py",
-					"settings":
-					{
-						"buffer_size": 1831,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -694,10 +217,6 @@
 		]
 	},
 	"menu_visible": true,
-	"output.exec":
-	{
-		"height": 191.0
-	},
 	"replace":
 	{
 		"height": 70.0
@@ -708,6 +227,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"",
+				"spider.py"
+			]
 		],
 		"width": 0.0
 	},
