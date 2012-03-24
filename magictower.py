@@ -69,29 +69,7 @@ class MagicTowerGame(Game):
                 if self.player.flyable:
                     floorselect = FloorSelecter(self.player, surface=self.gameboard)
                     floorselect.show()
-                    if floorselect.floornum < self.player.currentfloor.floornum:
-                        up = UpStair(self.player)
-                        self.player.goto_floor(floorselect.floornum)
-                        if self.player.currentfloor.floornum == 7:
-                            self.player.rect.left = up.rect.left + CELL_SIZE
-                            self.player.rect.top = up.rect.top
-                        elif self.player.currentfloor.floornum in [8, 12]:
-                            self.player.rect.left = up.rect.left
-                            self.player.rect.top = up.rect.top - CELL_SIZE
-                        elif self.player.currentfloor.floornum == 9:
-                            self.player.rect.left = up.rect.left
-                            self.player.rect.top = up.rect.top + CELL_SIZE
-                        else:
-                            self.player.rect.left = up.rect.left - CELL_SIZE
-                            self.player.rect.top = up.rect.top
-                    elif floorselect.floornum > self.player.currentfloor.floornum:
-                        down = DownStair(self.player)
-                        self.player.rect.left = down.rect.left + CELL_SIZE
-                        self.player.rect.top = down.rect.top
-                        if self.player.currentfloor.floornum == 10:
-                            if KingSnake.first_ften == True:
-                                Msgbox("You get here, now. But you can't continue.").show()
-                                KingSnake.first_ften = False
+                    self.player.goto_floor(floorselect.floornum)
  
     def draw(self):
         gameboard = self.gameboard

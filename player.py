@@ -133,42 +133,47 @@ class Player(Character):
         """ 跳转至指定楼层。
             floornum: 去往楼层号
         """
+        if floornum == self.currentfloor.floornum:
+            return
         f = self.visited_floors.get(floornum)
         if f is None:
             f = Floor(floornum)
             self.visited_floors[floornum] = f
         self.root.remove(self.currentfloor.group)
+        oldfloornum = self.currentfloor.floornum
         self.currentfloor = f
         self.root.add(self.currentfloor.group)
-
-    def go_upstair(self):
-        self.goto_floor(self.currentfloor.floornum+1)
-        for npc in self.currentfloor.group.sprites():
-            if isinstance(npc, DownStair):
-                self.rect.left = npc.rect.left + CELL_SIZE
-                self.rect.top = npc.rect.top
-                if self.currentfloor.floornum == 10:
-                    if KingSnake.first_ften == True:
-                        Msgbox("You get here, now. But you can't continue.").show()
-                        KingSnake.first_ften = False
-
-    def go_downstair(self):
-        self.goto_floor(self.currentfloor.floornum-1)
-        for npc in self.currentfloor.group.sprites():
-            if isinstance(npc, UpStair):
-                if self.currentfloor.floornum == 7:
+        if floornum > oldfloornum:
+            for npc in self.currentfloor.group.sprites():
+                if isinstance(npc, DownStair):
                     self.rect.left = npc.rect.left + CELL_SIZE
                     self.rect.top = npc.rect.top
-                elif self.currentfloor.floornum in [8, 12]:
-                    self.rect.left = npc.rect.left
-                    self.rect.top = npc.rect.top - CELL_SIZE
-                elif self.currentfloor.floornum == 9:
-                    self.rect.left = npc.rect.left
-                    self.rect.top = npc.rect.top + CELL_SIZE
-                else:
-                    self.rect.left = npc.rect.left - CELL_SIZE
-                    self.rect.top = npc.rect.top
-
+                    if self.currentfloor.floornum == 10:
+                        if KingSnake.first_ften == True:
+                            Msgbox("You get here, now. But you can't continue.").show()
+                            KingSnake.first_ften = False
+        else:
+            for npc in self.currentfloor.group.sprites():
+                if isinstance(npc, UpStair):
+                    if self.currentfloor.floornum == 7:
+                        self.rect.left = npc.rect.left + CELL_SIZE
+                        self.rect.top = npc.rect.top
+                    elif self.currentfloor.floornum in [8, 12]:
+                        self.rect.left = npc.rect.left
+                        self.rect.top = npc.rect.top - CELL_SIZE
+                    elif self.currentfloor.floornum == 9:
+                        self.rect.left = npc.rect.left
+                        self.rect.top = npc.rect.top + CELL_SIZE
+                    else:
+                        self.rect.left = npc.rect.left - CELL_SIZE
+                        self.rect.top = npc.rect.top
+            
+    def go_upstair(self):
+        self.goto_floor(self.currentfloor.floornum+1)
+        
+    def go_downstair(self):
+        self.goto_floor(self.currentfloor.floornum-1)
+        
     def poison(self):
         self.condition = "POISON"
         Msgbox("Ouch! You've got POISON condition to hurt health!").show()
