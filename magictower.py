@@ -35,7 +35,7 @@ class MagicTowerGame(Game):
         self.gameboard = self.screen.subsurface(TEXTBOARD_WIDTH, 0, GAMEBOARD_WIDTH, GAMEBOARD_HEIGHT)
         
         initspeed = [0, 0]
-        self.player = CheatPlayer(self, initspeed, (CELL_SIZE/2, MAP_ROWS*CELL_SIZE-CELL_SIZE/2), self.gameboard)
+        self.player = Player(self, initspeed, (CELL_SIZE/2, MAP_ROWS*CELL_SIZE-CELL_SIZE/2), self.gameboard)
         self.root.add(self.player)
         self.root.add(self.player.currentfloor.group)
                 
